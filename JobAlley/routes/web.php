@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyjobController;
+use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\JobsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,5 +42,11 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/profile/myjobs', [MyjobController::class, 'job'])->middleware(['auth','user'])->name('profile.myjobs');
+
+Route::resource('application', ApplicationController::class)->middleware(['auth', 'admin']);
+
+
+Route::get('/create', [JobsController::class, 'create'])->middleware(['auth', 'admin'])->name('create');
+Route::post('/create', [JobsController::class, 'save'])->middleware(['auth', 'admin'])->name('jobs.save');
 
 require __DIR__.'/auth.php';
