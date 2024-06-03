@@ -10,8 +10,8 @@ class JobsController extends Controller
     public function index()
     {
         $jobs = Jobs::orderBy('id', 'desc')->get();
-        $total = Jobs::count();
-        return view('home', compact(['jobs', 'total']));
+       
+        return view('admin.adminhome', ['jobs' => $jobs]);
     }
 
     public function create()
@@ -41,7 +41,7 @@ class JobsController extends Controller
         if ($saved) 
         {
             session()->flash('success', 'New Job Created Successfully! ');
-            return redirect(route('home'));
+            return redirect(route('admin.adminhome'));
         }
         else 
         {
@@ -62,10 +62,10 @@ class JobsController extends Controller
         $jobs = Jobs::findOrFail($id)->delete();
         if ($jobs) {
             session()->flash('success', 'Job Deleted Successfully! ');
-            return redirect(route('home'));
+            return redirect(route('admin.adminhome'));
         } else {
             session()->flash('error', 'Job Unable To Delete, Try Again');
-            return redirect(route('home'));
+            return redirect(route('admin.adminhome'));
         }
     }
 
@@ -81,10 +81,11 @@ class JobsController extends Controller
         $jobs->company = $company;
         $jobs->location = $location;
         $jobs->description = $description;
+        
         $data = $jobs->save();
         if ($data) {
             session()->flash('success', 'Job Update Successfully');
-            return redirect(route('home'));
+            return redirect(route('admin.adminhome'));
         } else {
             session()->flash('error', 'Problem Occured, Try Again');
             //return redirect(route('update'));

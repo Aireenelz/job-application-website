@@ -45,8 +45,13 @@ Route::get('/profile/myjobs', [MyjobController::class, 'job'])->middleware(['aut
 
 Route::resource('application', ApplicationController::class)->middleware(['auth', 'admin']);
 
-
-Route::get('/create', [JobsController::class, 'create'])->middleware(['auth', 'admin'])->name('create');
-Route::post('/create', [JobsController::class, 'save'])->middleware(['auth', 'admin'])->name('jobs.save');
+Route::middleware(['auth', 'admin'])->group(function () {
+    
+    Route::get('/create', [JobsController::class, 'create'])->name('create');
+    Route::post('/create', [JobsController::class, 'save'])->name('jobs.save');
+    Route::get('/delete/{id}', [JobsController::class, 'delete'])->name('jobs.delete');
+    Route::get('/edit/{id}', [JobsController::class, 'edit'])->name('jobs.edit');
+    Route::get('/edit/{id}', [JobsController::class, 'update']);
+});
 
 require __DIR__.'/auth.php';

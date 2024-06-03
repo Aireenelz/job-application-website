@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\User;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Jobs;
 
 class HomeController extends Controller
 {
@@ -21,7 +22,8 @@ class HomeController extends Controller
 
             else if($usertype=='admin')  // admin to admin page
             {
-                return view('admin.adminhome');
+                $jobs = Jobs::orderBy('id', 'desc')->get();
+                return view('admin.adminhome', compact('jobs'));
             }
 
             else 
