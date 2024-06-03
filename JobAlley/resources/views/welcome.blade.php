@@ -104,10 +104,28 @@
                 </div>
                 
             </div>
+
         </div>
 
+        <!--about section--->
+        <section class="head pb-5" id="about">
+            <div class="container py-5"> 
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="font-weight-light text-center py-3">About Us</h1>
+                        <div class="flex justify-center">
+                            <h5>Established in 2024, JobAlley was created from the study hall in which the two developers
+                                    were meeting up for a chat. In the struggle of finding their own jobs, they decided to develop their
+                                    own job portal! 
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!--contact section--->
-        <section class="head pb-5">
+        <section class="head pb-5" id="contact">
             <div class="container py-5"> 
                 <div class="card">
                     <div class="card-body">
@@ -117,9 +135,9 @@
                                 <div class="row pt-3">
                                     <div class="col-lg-1 offset-1 col-md-2 col-sm-2 col-2">
                                         <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="35" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
-  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
-</svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="35" fill="currentColor" class="bi bi-geo-alt-fill" viewBox="0 0 16 16">
+                                                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                                            </svg>
                                         </span>
                                     </div>
                                     <div class="col-lg-10 col-md-9 col-sm-9">

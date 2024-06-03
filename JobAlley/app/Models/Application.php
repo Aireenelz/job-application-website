@@ -8,7 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Application extends Model
 {
     use HasFactory;
-
-    // include table of applied job here
-    // protected $table = 'table-name'; 
+    protected $table = 'application';
+    protected $fillable = [
+        'name',
+        'email',
+        'contact',
+        'resume',
+        'cover_letter',
+        'status',
+    ];
 }

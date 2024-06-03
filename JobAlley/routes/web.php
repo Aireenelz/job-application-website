@@ -43,8 +43,6 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/profile/myjobs', [MyjobController::class, 'job'])->middleware(['auth','user'])->name('profile.myjobs');
 
-Route::resource('application', ApplicationController::class)->middleware(['auth', 'admin']);
-
 Route::middleware(['auth', 'admin'])->group(function () {
     
     Route::get('/create', [JobsController::class, 'create'])->name('create');
@@ -52,6 +50,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/delete/{id}', [JobsController::class, 'delete'])->name('jobs.delete');
     Route::get('/edit/{id}', [JobsController::class, 'edit'])->name('jobs.edit');
     Route::post('/update/{id}', [JobsController::class, 'update'])->name('jobs.update');
+
+    //applicants part
+    Route::resource('application', ApplicationController::class);
+    //Route::post('application/{id}/forward', 'ApplicationController@forward')->name('application.forward');
 });
+
+
 
 require __DIR__.'/auth.php';
