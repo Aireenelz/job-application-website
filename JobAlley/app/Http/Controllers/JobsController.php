@@ -41,7 +41,7 @@ class JobsController extends Controller
         if ($saved) 
         {
             session()->flash('success', 'New Job Created Successfully! ');
-            return redirect(route('admin.adminhome'));
+            return redirect(route('home'));
         }
         else 
         {
@@ -54,18 +54,16 @@ class JobsController extends Controller
     public function edit($id)
     {
         $jobs = Jobs::findOrFail($id);
-        //return view('update', compact('jobs'));
+        return view('admin.update', compact('jobs'));
     }
 
     public function delete($id)
     {
         $jobs = Jobs::findOrFail($id)->delete();
         if ($jobs) {
-            session()->flash('success', 'Job Deleted Successfully! ');
-            return redirect(route('admin.adminhome'));
+            return response()->json(['message' => 'Job deleted successfully']);
         } else {
-            session()->flash('error', 'Job Unable To Delete, Try Again');
-            return redirect(route('admin.adminhome'));
+            return response()->json(['message' => 'Failed to delete job'], 500);
         }
     }
 
@@ -85,10 +83,10 @@ class JobsController extends Controller
         $data = $jobs->save();
         if ($data) {
             session()->flash('success', 'Job Update Successfully');
-            return redirect(route('admin.adminhome'));
+            return redirect(route('home'));
         } else {
             session()->flash('error', 'Problem Occured, Try Again');
-            //return redirect(route('update'));
+            return redirect(route('admin.update'));
         }
     }
 }

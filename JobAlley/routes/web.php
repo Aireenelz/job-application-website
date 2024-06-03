@@ -49,9 +49,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     
     Route::get('/create', [JobsController::class, 'create'])->name('create');
     Route::post('/create', [JobsController::class, 'save'])->name('jobs.save');
-    Route::get('/delete/{id}', [JobsController::class, 'delete'])->name('jobs.delete');
+    Route::delete('/delete/{id}', [JobsController::class, 'delete'])->name('jobs.delete');
     Route::get('/edit/{id}', [JobsController::class, 'edit'])->name('jobs.edit');
-    Route::get('/edit/{id}', [JobsController::class, 'update']);
+    Route::post('/update/{id}', [JobsController::class, 'update'])->name('jobs.update');
 });
 
 require __DIR__.'/auth.php';
