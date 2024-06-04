@@ -26,9 +26,9 @@
 
         
         <style>
-            body {font-family: Figtree, sans-serif};
+            body {font-family: Figtree, sans-serif;}
             .jumbotron {
-                background-color: #f4511e;
+                background-color: #CCCCFF;
                 color: #fff;
             }
         </style>
@@ -37,45 +37,45 @@
 
     <body>
 
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-        <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm bg-white navbar-dark fixed-top">
+        <div class="container">
             
             
-            <a class="navbar-brand mt-2" href="/">JobAlley</a>
+            <a class="navbar-brand mt-2 font-weight-bold text-dark" href="/">JobAlley</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav px-4">
                 
                     <li class=" nav-item">
-                        <a href="#jobs" class="nav-link font-semibold text-blue-950 hover:text-gray-900 dark:text-blue-950 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-white-500">Explore Jobs</a>
+                        <a href="#jobs" class="nav-link font-weight-semibold text-dark">Explore Jobs</a>
                     </li>
                     <li class=" nav-item">
-                        <a href="#about" class=" nav-link ml-4 font-semibold text-blue-950 hover:text-gray-900 dark:text-blue-950 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">About Us</a>
+                        <a href="#about" class=" nav-link font-weight-semibold text-dark">About Us</a>
                     </li>
                     <li class=" nav-item">
-                        <a href="#contact" class="nav-link ml-4 font-semibold text-blue-950 hover:text-gray-900 dark:text-blue-950 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Contact Us</a>
+                        <a href="#contact" class="nav-link font-weight-semibold text-dark">Contact Us</a>
                     </li>
                         
                 </ul>
             </div>
             @if (Route::has('login'))
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right pt-2 pb-2 space-y-1 ml-auto">
                     @auth
-                        <a href="{{ url('/home') }}" class="font-semibold text-blue-950 hover:text-gray-900 dark:text-blue-950 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
+                        <a href="{{ url('/home') }}" class="font-semibold text-blue-950 hover:text-gray-900 dark:text-blue-950 dark:hover:text-dark focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
                     @else
 
                     <li>
-                        <a href="{{ route('login') }}" class="ml-4 font-semibold text-blue-950 hover:text-gray-900 dark:text-blue-950 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                        <span class="glyphicon glyphicon-log-in"></span>    Log In</a>
+                        <a href="{{ route('login') }}" class="ml-4 font-semibold text-blue-950 hover:text-gray-900 dark:text-blue-950 dark:hover:text-dark focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                           Log In</a>
                     </li>
 
                         @if (Route::has('register'))
                         <li>
-                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-blue-950 hover:text-gray-900 dark:text-blue-950 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                                <span class="glyphicon glyphicon-user"></span>    Register</a>
+                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-blue-950 hover:text-gray-900 dark:text-blue-950 dark:hover:text-dark focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                                   Register</a>
                         </li>
                         @endif
                     @endauth
@@ -96,7 +96,7 @@
             <div class="row">
                 <div class="col-sm-5">
                     <h1>Find jobs that are in demand!</h1>
-                    <p>All with one click!</p>
+                    <h5>All with one click!</h5>
                     
                 </div>
                 <div class="col-sm-7">
@@ -106,6 +106,44 @@
             </div>
 
         </div>
+
+        <!-- Job listings section -->
+        <section class="head pb-5" id="jobs">
+            <div class="container py-5"> 
+                <h1 class="font-weight-light text-center py-3">Featured Jobs</h1>
+                <div class="row">
+                    <!-- Sample job listing 1 -->
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">Job Title 1</h5>
+                                <p class="card-text">Description of the Job</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="{{ route('login') }}" class="btn btn-sm btn-outline-secondary">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- card 2 -->
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">Job Title 2</h5>
+                                <p class="card-text">Description of the Job</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="{{ route('login') }}" class="btn btn-sm btn-outline-secondary">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
 
         <!--about section--->
         <section class="head pb-5" id="about">
