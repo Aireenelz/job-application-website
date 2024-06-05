@@ -26,34 +26,13 @@
 
                 <!-- Saved Jobs content -->
                 <div x-show="tab === 'saved'">
-                    <h4 class="mb-4">Saved Jobs</h4>
-                    <!-- Include content for Saved Jobs here -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                        <!-- Dummy data for saved jobs -->
-                        @for ($i = 1; $i <= 6; $i++)
-                            <div class="bg-gray-100 p-4 rounded-lg shadow">
-                                <h5 class="font-semibold">Job Title {{ $i }}</h5>
-                                <p>Company {{ $i }}</p>
-                                <p>Location {{ $i }}</p>
-                            </div>
-                        @endfor
-                    </div>
+                    @include('profile.view-saved-jobs') 
                 </div>
 
                 <!-- Applied Jobs content -->
                 <div x-show="tab === 'applied'">
-                    <h4 class="mb-4">Applied Jobs</h4>
-                    <!-- Include content for Applied Jobs here -->
-                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                        <!-- Dummy data for applied jobs -->
-                        @for ($i = 1; $i <= 6; $i++)
-                            <div class="bg-gray-100 p-4 rounded-lg shadow">
-                                <h5 class="font-semibold">Job Title {{ $i }}</h5>
-                                <p>Company {{ $i }}</p>
-                                <p>Location {{ $i }}</p>
-                            </div>
-                        @endfor
-                    </div>
+                    @include('profile.view-applied-jobs') 
+                    
                 </div>
             </div>
         </div>
