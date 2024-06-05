@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MyjobController;
+use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\JobsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,5 +42,20 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/profile/myjobs', [MyjobController::class, 'job'])->middleware(['auth','user'])->name('profile.myjobs');
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    
+    Route::get('/create', [JobsController::class, 'create'])->name('create');
+    Route::post('/create', [JobsController::class, 'save'])->name('jobs.save');
+    Route::delete('/delete/{id}', [JobsController::class, 'delete'])->name('jobs.delete');
+    Route::get('/edit/{id}', [JobsController::class, 'edit'])->name('jobs.edit');
+    Route::post('/update/{id}', [JobsController::class, 'update'])->name('jobs.update');
+
+    //applicants part
+    Route::resource('application', ApplicationController::class);
+    //Route::post('application/{id}/forward', 'ApplicationController@forward')->name('application.forward');
+});
+
+
 
 require __DIR__.'/auth.php';
