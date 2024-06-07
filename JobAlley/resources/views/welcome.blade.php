@@ -26,10 +26,25 @@
 
         
         <style>
-            body {font-family: Figtree, sans-serif;}
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                font-family: Figtree, sans-serif;
+            }
             .jumbotron {
                 background-color: #CCCCFF;
                 color: #fff;
+            }
+            .navbar-toggler {
+                background-color: #CCCCFF;
+            }
+            .nav-item {
+                padding: 0 5px;
+            }
+            .nav-item:hover {
+                background-color: #D3D3D3;
+                border-radius: 5px;
             }
         </style>
 
@@ -41,7 +56,7 @@
         <div class="container">
             
             
-            <a class="navbar-brand mt-2 font-weight-bold text-dark" href="/">JobAlley</a>
+            <a class="navbar-brand mt-0 font-weight-bold text-dark" href="/">JobAlley</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -126,7 +141,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- card 2 -->
+                    <!-- Sample job listing 2 -->
                     <div class="col-md-4">
                         <div class="card mb-4 box-shadow">
                             <div class="card-body">
@@ -140,7 +155,25 @@
                             </div>
                         </div>
                     </div>
-                    
+                    <!-- Sample job listing 3 -->
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">Job Title 3</h5>
+                                <p class="card-text">Description of the Job</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a href="{{ route('login') }}" class="btn btn-sm btn-outline-secondary">View Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end align-items-center">
+                    <div class="btn-group">
+                        <a href="{{ route('login') }}" class="btn btn-sm btn-outline-secondary">More Jobs</a>
+                    </div>
                 </div>
             </div>
         </section>

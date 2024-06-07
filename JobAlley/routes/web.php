@@ -8,6 +8,8 @@ use App\Http\Controllers\MyjobController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\JobsController;
 
+use App\Http\Controllers\JobsListController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -55,6 +57,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::resource('application', ApplicationController::class);
     //Route::post('application/{id}/forward', 'ApplicationController@forward')->name('application.forward');
 });
+
+// Job seeker module
+Route::get('/jobs', [JobsListController::class, 'index'])->name('jobs');
 
 
 
