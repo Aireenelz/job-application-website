@@ -146,73 +146,75 @@
         </div>
     </nav>
 
-    <!-- Back button -->
-    <section class="top-section back-link-section">
-        <a href="javascript:void(0);" class="back-link" onclick="goBack()">
-            <i class="fa-solid fa-left-long"></i> Go Back
-        </a>
-    </section>
+    <div class="bg-gray-100">
+        <!-- Back button -->
+        <section class="top-section back-link-section">
+            <a href="javascript:void(0);" class="back-link" onclick="goBack()">
+                <i class="fa-solid fa-left-long"></i> Go Back
+            </a>
+        </section>
 
-    <!-- Application form -->
-    <div class="section apply-job">
-        <div class="col-md-6" id="apply-job">
-            
-            <form class="apply-job-form" id="apply-job-form" action="{{ route('application.store', $job->id) }}" method="POST">
-                @csrf     
+        <!-- Application form -->
+        <div class="section apply-job">
+            <div class="col-md-6" id="apply-job">
+                
+                <form class="apply-job-form" id="apply-job-form" action="{{ route('application.store', $job->id) }}" method="POST">
+                    @csrf     
 
-                <!-- Full name -->
-                <div class="row g-2 job-form-row">
-                    <div class="col-sm-12">
-                        <label for="fullName">Full Name</label>
-                        <input type="text" class="form-control" id="fullName" name="fullName" placeholder="" required value="{{ old('fullName') }}" />
+                    <!-- Full name -->
+                    <div class="row g-2 job-form-row">
+                        <div class="col-sm-12">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" class="form-control" id="fullName" name="fullName" placeholder="" required value="{{ old('fullName') }}" />
+                        </div>
                     </div>
-                </div>
 
-                <!-- Contact number -->
-                <div class="row g-2 job-form-row">
-                    <div class="col-sm-12">
-                        <label for="contactNumber">Contact Number</label>
-                        <input type="text" class="form-control" id="contactNumber" name="contactNumber" placeholder="" required value="{{ old('contactNumber') }}" />
+                    <!-- Contact number -->
+                    <div class="row g-2 job-form-row">
+                        <div class="col-sm-12">
+                            <label for="contactNumber">Contact Number</label>
+                            <input type="text" class="form-control" id="contactNumber" name="contactNumber" placeholder="" required value="{{ old('contactNumber') }}" />
+                        </div>
                     </div>
-                </div>
 
-                <!-- Email -->
-                <div class="row g-2 job-form-row">
-                    <div class="col-sm-12">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="" required value="{{ old('email') }}" />
+                    <!-- Email -->
+                    <div class="row g-2 job-form-row">
+                        <div class="col-sm-12">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="" required value="{{ old('email') }}" />
+                        </div>
                     </div>
-                </div>
 
-                <!-- Resume -->
-                <div class="row g-2 job-form-row">
-                    <div class="col-sm-12">
-                        <label for="resume">Upload Resume</label>
-                        <input type="file" class="form-control" id="resume" name="resume" accept=".pdf,.doc,.docx" required />
+                    <!-- Resume -->
+                    <div class="row g-2 job-form-row">
+                        <div class="col-sm-12">
+                            <label for="resume">Upload Resume</label>
+                            <input type="file" class="form-control" id="resume" name="resume" accept=".pdf,.doc,.docx" required />
+                        </div>
                     </div>
-                </div>
 
-                <!-- Cover letter -->
-                <div class="row g-2 job-form-row">
-                    <div class="col-sm-12">
-                        <label for="coverLetter">Cover Letter</label>
-                        <textarea class="form-control" id="coverLetter" name="coverLetter" placeholder="Enter your cover letter here" required>{{ old('coverLetter') }}</textarea>
+                    <!-- Cover letter -->
+                    <div class="row g-2 job-form-row">
+                        <div class="col-sm-12">
+                            <label for="coverLetter">Cover Letter</label>
+                            <textarea class="form-control" id="coverLetter" name="coverLetter" placeholder="Enter your cover letter here" required>{{ old('coverLetter') }}</textarea>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Submit button -->
-                <div class="submit-button-applyjob d-flex justify-content-end">
-                    <button class="btn btn-primary" id="submit-button-applyjob" type="submit">Submit</button>
-                </div>
-            </form>
+                    <!-- Submit button -->
+                    <div class="submit-button-applyjob d-flex justify-content-end">
+                        <button class="btn btn-primary" id="submit-button-applyjob" type="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
     
     <!-- Footer -->
-    <footer class="bg-body-tertiary text-center text-lg-start mb-0">
+    <footer class="bg-body-tertiary text-center text-lg-start mb-0 bg-white">
         <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+        <div class="text-center p-3">
             © 2024 Copyright
             <a class="text-body" href="#">JobAlley.com</a>
         </div>

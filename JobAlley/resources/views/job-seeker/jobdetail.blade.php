@@ -159,55 +159,57 @@
         </div>
     </nav>
 
-    <!-- Back button -->
-    <section class="top-section back-link-section">
-        <a href="javascript:void(0);" class="back-link" onclick="goBack()">
-            <i class="fa-solid fa-left-long"></i> Go Back
-        </a>
-    </section>
+    <div class="bg-gray-100">
+        <!-- Back button -->
+        <section class="top-section back-link-section">
+            <a href="javascript:void(0);" class="back-link" onclick="goBack()">
+                <i class="fa-solid fa-left-long"></i> Go Back
+            </a>
+        </section>
 
-    <!-- Job Details -->
-    <section class="job-details-section section">
-        <div class="row">
-            <div class="job-details col-md-12">
-                <div class="job-details-content">
-                    <div>
-                        <!-- Job title -->
-                        <h1 class="h1" id="job-title">{{ $job->position }}</h1>
+        <!-- Job Details -->
+        <section class="job-details-section section">
+            <div class="row">
+                <div class="job-details col-md-12">
+                    <div class="job-details-content">
+                        <div>
+                            <!-- Job title -->
+                            <h1 class="h1" id="job-title">{{ $job->position }}</h1>
 
-                        <!-- Apply button -->
-                        <a href="{{ route('jobsearch.detail.apply', ['id' => $job->id]) }}" class="btn btn-primary apply-job-button" id="apply-job-button">Apply</a>
-                    </div>
-        
-                    <hr>
-        
-                    <!-- Job small details -->
-                    <div class="job-small-details job-small-details-jobdetails">
-                        <div class="job-small-details-item location">
-                            <span class="input-icon"><i class="fa-solid fa-location-dot"></i></span>
-                            <span class="word-beside-icon" id="job-location">{{ $job->location }}</span>
+                            <!-- Apply button -->
+                            <a href="{{ route('jobsearch.detail.apply', ['id' => $job->id]) }}" class="btn btn-primary apply-job-button" id="apply-job-button">Apply</a>
                         </div>
-                        <div class="job-small-details-item time">
-                            <span class="input-icon"><i class="fa-solid fa-clock"></i></span>
-                            <span class="word-beside-icon" id="date-posted">Posted on {{ $job->created_at->format('M d, Y') }}</span>
+            
+                        <hr>
+            
+                        <!-- Job small details -->
+                        <div class="job-small-details job-small-details-jobdetails">
+                            <div class="job-small-details-item location">
+                                <span class="input-icon"><i class="fa-solid fa-location-dot"></i></span>
+                                <span class="word-beside-icon" id="job-location">{{ $job->location }}</span>
+                            </div>
+                            <div class="job-small-details-item time">
+                                <span class="input-icon"><i class="fa-solid fa-clock"></i></span>
+                                <span class="word-beside-icon" id="date-posted">Posted on {{ $job->created_at->format('M d, Y') }}</span>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- About the job -->
-                    <div class="about-the-job">
-                        <h3 class="h3">About the Job</h3>
-                        <p id="about-the-job">{{ $job->description }}</p>
+                        <!-- About the job -->
+                        <div class="about-the-job">
+                            <h3 class="h3">About the Job</h3>
+                            <p id="about-the-job">{{ $job->description }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     
     <!-- Footer -->
-    <footer class="bg-body-tertiary text-center text-lg-start mb-0">
+    <footer class="bg-body-tertiary text-center text-lg-start mb-0 bg-white">
         <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+        <div class="text-center p-3">
             © 2024 Copyright
             <a class="text-body" href="#">JobAlley.com</a>
         </div>

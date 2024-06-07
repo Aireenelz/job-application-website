@@ -243,78 +243,80 @@
         </div>
     </nav>
 
-    <!-- Banner -->
-    <section class="banner top-section", id="banner">
-        <div>
-            <h1 class="lh-lg fw-bold">Find your <span class="blue-text">new job</span> today</h1>
-            <p>Explore a wide range of job opportunities from multiple companies and take the next step in your career journey.</p>
-        </div>
-
-        <form action="{{ route('jobsearch.filter') }}" method="GET">
-            <div class="flex row g-3 banner-input">
-                <!-- Input field for job title -->
-                <div class="flex col-sm-7 banner-input-field">
-                    <span class="input-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <input type="text" name="job-title" id="job-title" class="form-control input-field" placeholder="What job position are you looking for?" value="">
-                </div>
-
-                <!-- Input field for location -->
-                <div class="flex col-sm banner-input-field">
-                    <span class="input-icon"><i class="fa-solid fa-location-dot"></i></span>
-                    <input type="text" name="job-location" id="job-location" class="form-control input-field" placeholder="Location" value="">
-                </div>
-
-                <!-- Search button -->
-                <div class="col-auto banner-input-field">
-                    <button type="submit" class="btn btn-primary">Search</button>
-                </div>
+    <div class="bg-gray-100">
+        <!-- Banner -->
+        <section class="banner top-section", id="banner">
+            <div>
+                <h1 class="lh-lg fw-bold">Find your <span class="blue-text">new job</span> today</h1>
+                <p>Explore a wide range of job opportunities from multiple companies and take the next step in your career journey.</p>
             </div>
-        </form>
-    </section>
 
-    <!-- Section for jobs list -->
-    <section class="job-search-main">
-        <div class="row">
+            <form action="{{ route('jobsearch.filter') }}" method="GET">
+                <div class="flex row g-3 banner-input">
+                    <!-- Input field for job title -->
+                    <div class="flex col-sm-7 banner-input-field">
+                        <span class="input-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <input type="text" name="job-title" id="job-title" class="form-control input-field" placeholder="What job position are you looking for?" value="">
+                    </div>
 
-            <!-- Jobs list -->
-            <div class="col jobs-panel">
-                <div class="col-heading">
-                <h3><span id="number-of-jobs">{{ $jobs->count() }}</span> Jobs</h3>
+                    <!-- Input field for location -->
+                    <div class="flex col-sm banner-input-field">
+                        <span class="input-icon"><i class="fa-solid fa-location-dot"></i></span>
+                        <input type="text" name="job-location" id="job-location" class="form-control input-field" placeholder="Location" value="">
+                    </div>
+
+                    <!-- Search button -->
+                    <div class="col-auto banner-input-field">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </div>
                 </div>
-                <!-- Content for the jobs list -->
-                <div>
-                    <ul class="cards flex">
-                    @foreach ($jobs as $job)
-                    <!-- 1 list item is 1 job -->
-                    <li class="card-custom flex">
-                        <div class="job-details-col">
-                            <p class="company-name" id="company-name">{{ $job->company }}</p>
-                            <h2 class="job-title" id="job-title">{{ $job->position }}</h2>
-                            <div class="job-small-details">
-                                <div class="job-small-details-item location">
-                                    <span class="input-icon"><i class="fa-solid fa-location-dot"></i></span>
-                                    <span class="word-beside-icon" id="job-location">{{ $job->location }}</span>
+            </form>
+        </section>
+
+        <!-- Section for jobs list -->
+        <section class="job-search-main">
+            <div class="row">
+
+                <!-- Jobs list -->
+                <div class="col jobs-panel">
+                    <div class="col-heading">
+                    <h3><span id="number-of-jobs">{{ $jobs->count() }}</span> Jobs</h3>
+                    </div>
+                    <!-- Content for the jobs list -->
+                    <div>
+                        <ul class="cards flex">
+                        @foreach ($jobs as $job)
+                        <!-- 1 list item is 1 job -->
+                        <li class="card-custom flex">
+                            <div class="job-details-col">
+                                <p class="company-name" id="company-name">{{ $job->company }}</p>
+                                <h2 class="job-title" id="job-title">{{ $job->position }}</h2>
+                                <div class="job-small-details">
+                                    <div class="job-small-details-item location">
+                                        <span class="input-icon"><i class="fa-solid fa-location-dot"></i></span>
+                                        <span class="word-beside-icon" id="job-location">{{ $job->location }}</span>
+                                    </div>
+                                </div>
+                                <p id="job-excerpt">{{ $job->description }}</p>
+                                <div class="d-flex justify-content-end align-items-center">
+                                    <div class="btn-group" id="job-detail-button">
+                                        <a href="{{ route('jobsearch.detail', ['id' => $job->id]) }}" class="btn btn-sm btn-outline-primary">View Details</a>
+                                    </div>
                                 </div>
                             </div>
-                            <p id="job-excerpt">{{ $job->description }}</p>
-                            <div class="d-flex justify-content-end align-items-center">
-                                <div class="btn-group" id="job-detail-button">
-                                    <a href="{{ route('jobsearch.detail', ['id' => $job->id]) }}" class="btn btn-sm btn-outline-primary">View Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                @endforeach
-                    </ul>
+                        </li>
+                    @endforeach
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
     
     <!-- Footer -->
-    <footer class="bg-body-tertiary text-center text-lg-start mb-0">
+    <footer class="bg-body-tertiary text-center text-lg-start mb-0 bg-white">
         <!-- Copyright -->
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+        <div class="text-center p-3">
             © 2024 Copyright
             <a class="text-body" href="#">JobAlley.com</a>
         </div>
