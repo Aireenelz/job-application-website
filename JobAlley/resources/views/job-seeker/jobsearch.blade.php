@@ -23,7 +23,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- CSS style -->
+    <!-- Custom CSS style -->
     <style>
         html {
             scroll-behavior: smooth;
@@ -40,6 +40,154 @@
         .nav-item:hover {
             background-color: #D3D3D3;
             border-radius: 5px;
+        }
+
+        /* Layout */
+        .top-section {
+            padding: 40px;
+            margin-top: 60px;
+        }
+        section {
+            padding: 0 40px 40px 40px;
+        }
+
+        /* Banner */
+        .input-field {
+            padding: 10px 15px 10px 50px;
+        }
+        .input-icon {
+            position: absolute;
+            padding-left: 15px;
+            color: #ccc;
+            font-size: 1.2rem;
+            padding-top: 5px;
+        }
+        .banner h1 {
+            margin-top: 20px;
+        }
+        .blue-text {
+            color: #3575E2;
+        }
+        .banner-input {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Jobs list */
+        .col-heading {
+            margin-top: 10px;
+            padding-top: 10px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .filters-col-heading {
+            padding-left: 16px;
+            padding-bottom: 20px;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-items: stretch;
+            padding: 0;
+        }
+
+        .card-custom {
+            width: calc(100% / 3 - 20px);
+            text-align: center;
+            list-style: none;
+            background-color: #fff;
+            padding: 20px 15px;
+            border-radius: 15px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: flex-start;
+            flex-direction: row;
+            justify-content: flex-start;
+            margin: 10px 0;
+            margin-right: 20px;
+        }
+
+        .job-thumbnail-col {
+            width: 170px;
+        }
+
+        .job-details-col {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+        .company-name {
+            margin-bottom: 10px;
+        }
+
+        .job-title {
+            margin-bottom: 10px;
+        }
+
+        .job-small-details {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 10px;
+        }
+
+        .job-small-details-item {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+
+        .job-small-details-item .input-icon {
+            padding: 0;
+            font-size: 1rem;
+        }
+
+        .word-beside-icon {
+            padding-left: 20px;
+        }
+
+        /* Responsiveness */
+        @media (width < 1000px) {
+            .banner-input-field {
+                margin-bottom: 15px;
+            }
+
+            .card-custom {
+                width: 100%;
+                text-align: center;
+                list-style: none;
+                background-color: #fff;
+                padding: 20px 15px;
+                border-radius: 15px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                justify-content: space-between;
+                margin: 20px 0;
+                height: fit-content;
+            }
+
+            .job-details-col {
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .job-small-details {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 10px;
+            }
         }
     </style>
 
@@ -58,13 +206,13 @@
                 <ul class="navbar-nav px-4">
                 
                     <li class=" nav-item">
-                        <a href="#jobs" class="nav-link font-weight-semibold text-dark">Explore Jobs</a>
+                        <a href="#banner" class="nav-link font-weight-semibold text-dark">Explore Jobs</a>
                     </li>
                     <li class=" nav-item">
-                        <a href="#about" class=" nav-link font-weight-semibold text-dark">About Us</a>
+                        <a href="/" class=" nav-link font-weight-semibold text-dark">About Us</a>
                     </li>
                     <li class=" nav-item">
-                        <a href="#contact" class="nav-link font-weight-semibold text-dark">Contact Us</a>
+                        <a href="/" class="nav-link font-weight-semibold text-dark">Contact Us</a>
                     </li>
                         
                 </ul>
@@ -92,142 +240,63 @@
         </div>
     </nav>
 
-    <!-- Top section -->
+    <!-- Banner -->
     <section class="banner top-section", id="banner">
         <div>
             <h1 class="lh-lg fw-bold">Find your <span class="blue-text">new job</span> today</h1>
             <p>Explore a wide range of job opportunities from multiple companies and take the next step in your career journey.</p>
         </div>
 
-        <form>
+        <form action="{{ route('jobsearch.filter') }}" method="GET">
             <div class="flex row g-3 banner-input">
                 <!-- Input field for job title -->
-                <div class="flex col-sm-7">
+                <div class="flex col-sm-7 banner-input-field">
                     <span class="input-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
                     <input type="text" name="job-title" id="job-title" class="form-control input-field" placeholder="What job position are you looking for?" value="">
                 </div>
 
                 <!-- Input field for location -->
-                <div class="flex col-sm">
+                <div class="flex col-sm banner-input-field">
                     <span class="input-icon"><i class="fa-solid fa-location-dot"></i></span>
                     <input type="text" name="job-location" id="job-location" class="form-control input-field" placeholder="Location" value="">
                 </div>
 
                 <!-- Search button -->
-                <div class="col-auto">
+                <div class="col-auto banner-input-field">
                     <button type="submit" class="btn btn-primary">Search</button>
                 </div>
             </div>
         </form>
     </section>
 
-    <!-- Section for side panel & jobs list -->
+    <!-- Section for jobs list -->
     <section class="job-search-main">
         <div class="row">
-            <!-- Side panel on the left -->
-            <div class="col-md-3 filter-panel">
-                <!-- Content for the side panel -->
-                <div class="card">
-                    <!-- Side panel heading -->
-                    <div class="col-heading filters-col-heading">
-                        <h3>Filters</h3>
-                    </div>
 
-                    <!-- Radio groups -->
-                    <ul class="list-group list-group-flush">
-                        
-                        <!-- Filter based on experience level -->
-                        <li class="list-group-item filter-category">
-                            <b>Experience Level</b>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="experienceLevel" id="entry-level">
-                                <label class="form-check-label" for="entry">
-                                    Entry
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="experienceLevel" id="mid-level">
-                                <label class="form-check-label" for="mid">
-                                    Mid
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="experienceLevel" id="senior-level">
-                                <label class="form-check-label" for="senior">
-                                    Senior
-                                </label>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Jobs list on the right -->
-            <div class="col-md-9 jobs-panel">
+            <!-- Jobs list -->
+            <div class="col jobs-panel">
                 <div class="col-heading">
-                    <h3><span id="number-of-jobs">00</span> Jobs</h3>
+                <h3><span id="number-of-jobs">{{ $jobs->count() }}</span> Jobs</h3>
                 </div>
                 <!-- Content for the jobs list -->
                 <div>
                     <ul class="cards flex">
-                        <!-- 1 list item is 1 job -->
-                        <li class="card-custom flex">
-                            <div class="job-thumbnail-col">
-                                <img id="job-thumbnail" src="images/logo1.png" alt="jobThumbnail">
-                            </div>
-                            <div class="job-details-col">
-                                <p class="company-name" id="company-name">Company Name</p>
-                                <h2 class="job-title" id="job-title">Job Title</h2>
-                                <div class="job-small-details">
-                                    <div class="job-small-details-item location">
-                                        <span class="input-icon"><i class="fa-solid fa-location-dot"></i></span>
-                                        <span class="word-beside-icon" id="job-location">Location</span>
-                                    </div>
-                                    <div class="job-small-details-item type">
-                                        <span class="input-icon"><i class="fa-solid fa-briefcase"></i></span>
-                                        <span class="word-beside-icon" id="job-type">Type</span>
-                                    </div>
-                                    <div class="job-small-details-item salary">
-                                        <span class="input-icon"><i class="fa-solid fa-dollar-sign"></i></span>
-                                        <span class="word-beside-icon" id="job-salary">Salary</span>
-                                    </div>
-                                    <div class="job-small-details-item time">
-                                        <span class="input-icon"><i class="fa-solid fa-clock"></i></span>
-                                        <span class="word-beside-icon" id="date-posted">Date Posted</span>
-                                    </div>
+                    @foreach ($jobs as $job)
+                    <!-- 1 list item is 1 job -->
+                    <li class="card-custom flex">
+                        <div class="job-details-col">
+                            <p class="company-name" id="company-name">{{ $job->company }}</p>
+                            <h2 class="job-title" id="job-title">{{ $job->position }}</h2>
+                            <div class="job-small-details">
+                                <div class="job-small-details-item location">
+                                    <span class="input-icon"><i class="fa-solid fa-location-dot"></i></span>
+                                    <span class="word-beside-icon" id="job-location">{{ $job->location }}</span>
                                 </div>
-                                <p id="job-excerpt">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit voluptatem eveniet similique sapiente consectetur explicabo facere rem ipsa deleniti quos cumque ipsum architecto natus velit id, laboriosam inventore unde exercitationem.</p>
                             </div>
-                        </li>
-                        <!-- 1 list item is 1 job -->
-                        <li class="card-custom flex">
-                            <div class="job-thumbnail-col">
-                                <img id="job-thumbnail" src="images/logo1.png" alt="jobThumbnail">
-                            </div>
-                            <div class="job-details-col">
-                                <p class="company-name" id="company-name">Company Name</p>
-                                <h2 class="job-title" id="job-title">Job Title</h2>
-                                <div class="job-small-details">
-                                    <div class="job-small-details-item location">
-                                        <span class="input-icon"><i class="fa-solid fa-location-dot"></i></span>
-                                        <span class="word-beside-icon" id="job-location">Location</span>
-                                    </div>
-                                    <div class="job-small-details-item type">
-                                        <span class="input-icon"><i class="fa-solid fa-briefcase"></i></span>
-                                        <span class="word-beside-icon" id="job-type">Type</span>
-                                    </div>
-                                    <div class="job-small-details-item salary">
-                                        <span class="input-icon"><i class="fa-solid fa-dollar-sign"></i></span>
-                                        <span class="word-beside-icon" id="job-salary">Salary</span>
-                                    </div>
-                                    <div class="job-small-details-item time">
-                                        <span class="input-icon"><i class="fa-solid fa-clock"></i></span>
-                                        <span class="word-beside-icon" id="date-posted">Date Posted</span>
-                                    </div>
-                                </div>
-                                <p id="job-excerpt">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit voluptatem eveniet similique sapiente consectetur explicabo facere rem ipsa deleniti quos cumque ipsum architecto natus velit id, laboriosam inventore unde exercitationem.</p>
-                            </div>
-                        </li>
+                            <p id="job-excerpt">{{ $job->description }}</p>
+                        </div>
+                    </li>
+                @endforeach
                     </ul>
                 </div>
             </div>
@@ -242,5 +311,8 @@
             <a class="text-body" href="#">JobAlley.com</a>
         </div>
     </footer>
+    
+    <!-- Script -->
+    <script src="https://kit.fontawesome.com/dd36547fc8.js" crossorigin="anonymous"></script>
 </body>
 </html>

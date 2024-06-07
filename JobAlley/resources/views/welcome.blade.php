@@ -171,8 +171,8 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-end align-items-center">
-                    <div class="btn-group">
-                        <a href="{{ route('login') }}" class="btn btn-sm btn-outline-secondary">More Jobs</a>
+                    <div class="btn-group" id="more-jobs-button">
+                        <a href="{{ route('jobsearch') }}" class="btn btn-sm btn-outline-primary">More Jobs &nbsp; &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -228,7 +228,7 @@
                                     </div>
                                     <div class="col-lg-10 col-md-9 col-sm-9">
                                         <h3> Give us a call </h3>
-                                        <p>Mr Gojo Satoru <br> 
+                                        <p>Mr. Gojo Satoru <br> 
                                         +60 4 587 3641 , <br>
                                         Mon - Fri || 8:00 am - 6:00 pm</p>
                                     </div>
