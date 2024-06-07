@@ -51,142 +51,58 @@
             padding: 0 40px 40px 40px;
         }
 
-        /* Banner */
-        .input-field {
-            padding: 10px 15px 10px 50px;
-        }
-        .input-icon {
-            position: absolute;
-            padding-left: 15px;
-            color: #ccc;
-            font-size: 1.2rem;
-            padding-top: 5px;
-        }
-        .banner h1 {
-            margin-top: 20px;
-        }
-        .blue-text {
-            color: #3575E2;
-        }
-        .banner-input {
-            margin-top: 20px;
-            margin-bottom: 20px;
+        /* Job details */
+        .job-details {
+            background: #fefefe;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            margin: 0;
         }
 
-        /* Jobs list */
-        .col-heading {
-            margin-top: 10px;
-            padding-top: 10px;
-            display: flex;
-            justify-content: flex-end;
+        .apply-job-button {
+            background-color: #40e0d0;
+            border: 1px solid #40e0d0;
+            color: #000;
+            margin: 15px 0;
         }
 
-        .filters-col-heading {
-            padding-left: 16px;
+        .apply-job-button:hover {
+            border: 1px solid #000;
+            background: rgba(64, 224, 208, 0.8);
+            color: #000;
+        }
+
+        .job-small-details-jobdetails {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        /* Back link */
+        .back-link-section {
+            padding: 40px;
+            padding-left: 50px;
             padding-bottom: 20px;
         }
 
-        .cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            align-items: stretch;
-            padding: 0;
+        .back-link {
+            text-decoration: none;
+            color: #000;
         }
 
-        .card-custom {
-            width: calc(100% / 3 - 20px);
-            text-align: center;
-            list-style: none;
-            background-color: #fff;
-            padding: 20px 15px;
-            border-radius: 15px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: flex-start;
-            flex-direction: row;
-            justify-content: flex-start;
-            margin: 15px auto;
+        .back-link:hover {
+            color: #3575E2;
+            text-decoration: none;
         }
 
-        .job-thumbnail-col {
-            width: 170px;
-        }
-
-        .job-details-col {
-            padding: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: flex-start;
-            text-align: left;
-        }
-
-        .company-name {
-            margin-bottom: 10px;
-        }
-
-        .job-title {
-            margin-bottom: 10px;
-        }
-
-        .job-small-details {
-            display: flex;
-            flex-direction: row;
-            margin-bottom: 10px;
-        }
-
-        .job-small-details-item {
-            display: flex;
-            align-items: center;
-            margin-right: 20px;
-        }
-
-        .job-small-details-item .input-icon {
-            padding: 0;
-            font-size: 1rem;
-        }
-
-        .word-beside-icon {
-            padding-left: 20px;
+        .job-details-section .row {
+            margin: 0;
+            justify-content: space-between;
         }
 
         /* Responsiveness */
         @media (width < 1000px) {
-            .banner-input-field {
-                margin-bottom: 15px;
-            }
-
-            .card-custom {
-                width: 100%;
-                text-align: center;
-                list-style: none;
-                background-color: #fff;
-                padding: 20px 15px;
-                border-radius: 15px;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-                display: flex;
-                align-items: center;
-                flex-direction: column;
-                justify-content: space-between;
-                margin: 20px 0;
-                height: fit-content;
-            }
-
-            .job-details-col {
-                padding: 10px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-            }
-
-            .job-small-details {
-                display: flex;
-                flex-direction: column;
-                margin-bottom: 10px;
-            }
+            
         }
     </style>
 
@@ -244,74 +160,51 @@
     </nav>
 
     <div class="bg-gray-100">
-        <!-- Banner -->
-        <section class="banner top-section", id="banner">
-            <div>
-                <h1 class="lh-lg fw-bold">Find your <span class="blue-text">new job</span> today</h1>
-                <p>Explore a wide range of job opportunities from multiple companies and take the next step in your career journey.</p>
-            </div>
-
-            <form action="{{ route('jobsearch.filter') }}" method="GET">
-                <div class="flex row g-3 banner-input">
-                    <!-- Input field for job title -->
-                    <div class="flex col-sm-7 banner-input-field">
-                        <span class="input-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-                        <input type="text" name="job-title" id="job-title" class="form-control input-field" placeholder="What job position are you looking for?" value="">
-                    </div>
-
-                    <!-- Input field for location -->
-                    <div class="flex col-sm banner-input-field">
-                        <span class="input-icon"><i class="fa-solid fa-location-dot"></i></span>
-                        <input type="text" name="job-location" id="job-location" class="form-control input-field" placeholder="Location" value="">
-                    </div>
-
-                    <!-- Search button -->
-                    <div class="col-auto banner-input-field">
-                        <button type="submit" class="btn btn-primary">Search</button>
-                    </div>
-                </div>
-            </form>
+        <!-- Back button -->
+        <section class="top-section back-link-section">
+            <a href="javascript:void(0);" class="back-link" onclick="goBack()">
+                <i class="fa-solid fa-left-long"></i> Go Back
+            </a>
         </section>
 
-        <!-- Section for jobs list -->
-        <section class="job-search-main">
+        <!-- Job Details -->
+        <section class="job-details-section section">
             <div class="row">
+                <div class="job-details col-md-12">
+                    <div class="job-details-content">
+                        <div>
+                            <!-- Job title -->
+                            <h1 class="h1" id="job-title">{{ $job->position }}</h1>
 
-                <!-- Jobs list -->
-                <div class="col jobs-panel">
-                    <div class="col-heading">
-                    <h3><span id="number-of-jobs">{{ $jobs->count() }}</span> Jobs</h3>
-                    </div>
-                    <!-- Content for the jobs list -->
-                    <div>
-                        <ul class="cards flex">
-                        @foreach ($jobs as $job)
-                        <!-- 1 list item is 1 job -->
-                        <li class="card-custom flex">
-                            <div class="job-details-col">
-                                <p class="company-name" id="company-name">{{ $job->company }}</p>
-                                <h2 class="job-title" id="job-title">{{ $job->position }}</h2>
-                                <div class="job-small-details">
-                                    <div class="job-small-details-item location">
-                                        <span class="input-icon"><i class="fa-solid fa-location-dot"></i></span>
-                                        <span class="word-beside-icon" id="job-location">{{ $job->location }}</span>
-                                    </div>
-                                </div>
-                                <p id="job-excerpt">{{ $job->description }}</p>
-                                <div class="d-flex justify-content-end align-items-center">
-                                    <div class="btn-group" id="job-detail-button">
-                                        <a href="{{ route('jobsearch.detail', ['id' => $job->id]) }}" class="btn btn-sm btn-outline-primary">View Details</a>
-                                    </div>
-                                </div>
+                            <!-- Apply button -->
+                            <a href="{{ route('jobsearch.detail.apply', ['id' => $job->id]) }}" class="btn btn-primary apply-job-button" id="apply-job-button">Apply</a>
+                        </div>
+            
+                        <hr>
+            
+                        <!-- Job small details -->
+                        <div class="job-small-details job-small-details-jobdetails">
+                            <div class="job-small-details-item location">
+                                <span class="input-icon"><i class="fa-solid fa-location-dot"></i></span>
+                                <span class="word-beside-icon" id="job-location">{{ $job->location }}</span>
                             </div>
-                        </li>
-                    @endforeach
-                        </ul>
+                            <div class="job-small-details-item time">
+                                <span class="input-icon"><i class="fa-solid fa-clock"></i></span>
+                                <span class="word-beside-icon" id="date-posted">Posted on {{ $job->created_at->format('M d, Y') }}</span>
+                            </div>
+                        </div>
+
+                        <!-- About the job -->
+                        <div class="about-the-job">
+                            <h3 class="h3">About the Job</h3>
+                            <p id="about-the-job">{{ $job->description }}</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
     </div>
+
     
     <!-- Footer -->
     <footer class="bg-body-tertiary text-center text-lg-start mb-0 bg-white">
@@ -324,5 +217,11 @@
     
     <!-- Script -->
     <script src="https://kit.fontawesome.com/dd36547fc8.js" crossorigin="anonymous"></script>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
 </body>
 </html>

@@ -122,50 +122,35 @@
 
         </div>
 
-        <!-- Job listings section -->
+        <!-- Job search feature intro section -->
         <section class="head pb-5" id="jobs">
             <div class="container py-5"> 
-                <h1 class="font-weight-light text-center py-3">Featured Jobs</h1>
-                <div class="row">
-                    <!-- Sample job listing 1 -->
-                    <div class="col-md-4">
+                <h1 class="font-weight-light text-center py-3">Explore Jobs</h1>
+                <div class="row d-flex">
+                    <!-- Intro 1 -->
+                    <div class="col-md-4 d-flex align-items-stretch">
                         <div class="card mb-4 box-shadow">
                             <div class="card-body">
-                                <h5 class="card-title">Job Title 1</h5>
-                                <p class="card-text">Description of the Job</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a href="{{ route('login') }}" class="btn btn-sm btn-outline-secondary">View Details</a>
-                                    </div>
-                                </div>
+                                <h5 class="card-title">Search for jobs</h5>
+                                <p class="card-text">Find the perfect match for your skills and expertise effortlessly.</p>
                             </div>
                         </div>
                     </div>
-                    <!-- Sample job listing 2 -->
-                    <div class="col-md-4">
+                    <!-- Intro 2 -->
+                    <div class="col-md-4 d-flex align-items-stretch">
                         <div class="card mb-4 box-shadow">
                             <div class="card-body">
-                                <h5 class="card-title">Job Title 2</h5>
-                                <p class="card-text">Description of the Job</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a href="{{ route('login') }}" class="btn btn-sm btn-outline-secondary">View Details</a>
-                                    </div>
-                                </div>
+                                <h5 class="card-title">View job details</h5>
+                                <p class="card-text">Dive deep into job descriptions to make informed decisions about your next career move.</p>
                             </div>
                         </div>
                     </div>
-                    <!-- Sample job listing 3 -->
-                    <div class="col-md-4">
+                    <!-- Intro 3 -->
+                    <div class="col-md-4 d-flex align-items-stretch">
                         <div class="card mb-4 box-shadow">
                             <div class="card-body">
-                                <h5 class="card-title">Job Title 3</h5>
-                                <p class="card-text">Description of the Job</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a href="{{ route('login') }}" class="btn btn-sm btn-outline-secondary">View Details</a>
-                                    </div>
-                                </div>
+                                <h5 class="card-title">Apply and submit job application</h5>
+                                <p class="card-text">Streamline your application process and connect with potential employers seamlessly.</p>
                             </div>
                         </div>
                     </div>

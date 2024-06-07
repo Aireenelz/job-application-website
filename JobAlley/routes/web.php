@@ -61,6 +61,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
 // Job seeker module
 Route::get('/jobsearch', [JobsListController::class, 'index'])->name('jobsearch');
 Route::get('/jobsearch/filter', [JobsListController::class, 'filter'])->name('jobsearch.filter');
+Route::get('/jobsearch/detail/{id}', [JobsListController::class, 'detail'])->name('jobsearch.detail');
+Route::get('/jobsearch/detail/{id}/apply', [JobsListController::class, 'apply'])->name('jobsearch.detail.apply');
+Route::post('/jobsearch/detail/{jobId}/apply', [ApplicationController::class, 'store'])->name('application.store');
 
 
 require __DIR__.'/auth.php';
