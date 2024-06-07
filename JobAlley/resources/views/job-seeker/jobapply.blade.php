@@ -110,7 +110,7 @@
                 <ul class="navbar-nav px-4">
                 
                     <li class=" nav-item">
-                        <a href="#banner" class="nav-link font-weight-semibold text-dark">Explore Jobs</a>
+                        <a href="/" class="nav-link font-weight-semibold text-dark">Explore Jobs</a>
                     </li>
                     <li class=" nav-item">
                         <a href="/" class=" nav-link font-weight-semibold text-dark">About Us</a>
