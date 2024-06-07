@@ -79,7 +79,9 @@
         }
 
         .back-link-section {
-            padding: 40px 80px 0 80px;
+            padding: 40px;
+            padding-left: 50px;
+            padding-bottom: 20px;
         }
 
         .back-link {
@@ -89,7 +91,7 @@
 
         .back-link:hover {
             color: #3575E2;
-            text-decoration: underline;
+            text-decoration: none;
         }
 
         .job-details-section .row {
@@ -156,15 +158,22 @@
         </div>
     </nav>
 
+    <!-- Back button -->
+    <section class="top-section back-link-section">
+        <a href="javascript:void(0);" class="back-link" onclick="goBack()">
+            <i class="fa-solid fa-left-long"></i> Go Back
+        </a>
+    </section>
+
     <!-- Job Details -->
-    <section class="job-details-section top-section">
+    <section class="job-details-section section">
         <div class="row">
             <div class="job-details col-md-12">
                 <div class="job-details-content">
                     <div>
                         <!-- Job title -->
-                        <h1 class="h1" id="job-title">Internship - Web Application Developer (Java)</h1>
-        
+                        <h1 class="h1" id="job-title">{{ $job->position }}</h1>
+
                         <!-- Apply button -->
                         <button type="button" class="btn btn-primary apply-job-button" id="apply-job-button" data-bs-toggle="modal" data-bs-target="#applyNowPopup">Apply</button>
                     </div>
@@ -175,18 +184,18 @@
                     <div class="job-small-details job-small-details-jobdetails">
                         <div class="job-small-details-item location">
                             <span class="input-icon"><i class="fa-solid fa-location-dot"></i></span>
-                            <span class="word-beside-icon" id="job-location">Location</span>
+                            <span class="word-beside-icon" id="job-location">{{ $job->location }}</span>
                         </div>
                         <div class="job-small-details-item time">
                             <span class="input-icon"><i class="fa-solid fa-clock"></i></span>
-                            <span class="word-beside-icon" id="date-posted">Date Posted</span>
+                            <span class="word-beside-icon" id="date-posted">Posted on {{ $job->created_at->format('M d, Y') }}</span>
                         </div>
                     </div>
-        
+
                     <!-- About the job -->
                     <div class="about-the-job">
                         <h3 class="h3">About the Job</h3>
-                        <p id="about-the-job">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, nulla saepe! Enim repudiandae, consequatur similique omnis, error sed, molestiae animi unde laudantium deserunt laborum eveniet dolor. Rerum dignissimos ullam expedita.</p>
+                        <p id="about-the-job">{{ $job->description }}</p>
                     </div>
                 </div>
             </div>
@@ -205,5 +214,11 @@
     
     <!-- Script -->
     <script src="https://kit.fontawesome.com/dd36547fc8.js" crossorigin="anonymous"></script>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
 </body>
 </html>

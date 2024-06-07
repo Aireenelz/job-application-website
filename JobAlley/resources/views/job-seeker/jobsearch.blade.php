@@ -106,7 +106,7 @@
             align-items: flex-start;
             flex-direction: row;
             justify-content: flex-start;
-            margin: 10px auto;
+            margin: 15px auto;
         }
 
         .job-thumbnail-col {
