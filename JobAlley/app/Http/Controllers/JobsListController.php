@@ -40,4 +40,13 @@ class JobsListController extends Controller
         // Pass job data to the view
         return view('job-seeker.jobdetail', compact('job'));
     }
+
+    public function apply($id) {
+        // Fetch the job details by ID
+        $job = Jobs::findOrFail($id);
+    
+        // Render the job apply view without passing the jobId
+        return view('job-seeker.jobapply', compact('job'));
+    }
+    
 }

@@ -32,3 +32,8 @@ Q&A
 - how to see database:
     - http://localhost/phpmyadmin/
 - routes/web.php: is where we define all the routes
+- how to configured route to a webpage:
+    - web.php: define route
+    - Controller.php: define the method
+    - new blade.php: configure the ui
+    - prev blade.php: update the route to the subsequent webpage

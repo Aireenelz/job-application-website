@@ -51,33 +51,6 @@
             padding: 0 40px 40px 40px;
         }
 
-        /* Job details */
-        .job-details {
-            background: #fefefe;
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            margin: 0;
-        }
-
-        .apply-job-button {
-            background-color: #40e0d0;
-            border: 1px solid #40e0d0;
-            color: #000;
-            margin: 15px 0;
-        }
-
-        .apply-job-button:hover {
-            border: 1px solid #000;
-            background: rgba(64, 224, 208, 0.8);
-            color: #000;
-        }
-
-        .job-small-details-jobdetails {
-            margin-top: 30px;
-            margin-bottom: 30px;
-        }
-
         /* Back link */
         .back-link-section {
             padding: 40px;
@@ -95,9 +68,23 @@
             text-decoration: none;
         }
 
-        .job-details-section .row {
-            margin: 0;
-            justify-content: space-between;
+        /* Apply job form */
+        .apply-job {
+            display: flex;
+            justify-content: center;
+            padding-bottom: 40px;
+        }
+
+        .apply-job-form {
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 10px;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+            border: 1px solid #000;
+        }
+
+        .job-form-row {
+            padding: 10px 0;
         }
 
         /* Responsiveness */
@@ -166,42 +153,60 @@
         </a>
     </section>
 
-    <!-- Job Details -->
-    <section class="job-details-section section">
-        <div class="row">
-            <div class="job-details col-md-12">
-                <div class="job-details-content">
-                    <div>
-                        <!-- Job title -->
-                        <h1 class="h1" id="job-title">{{ $job->position }}</h1>
+    <!-- Application form -->
+    <div class="section apply-job">
+        <div class="col-md-6" id="apply-job">
+            
+            <form class="apply-job-form" id="apply-job-form" action="{{ route('application.store', $job->id) }}" method="POST">
+                @csrf     
 
-                        <!-- Apply button -->
-                        <a href="{{ route('jobsearch.detail.apply', ['id' => $job->id]) }}" class="btn btn-primary apply-job-button" id="apply-job-button">Apply</a>
-                    </div>
-        
-                    <hr>
-        
-                    <!-- Job small details -->
-                    <div class="job-small-details job-small-details-jobdetails">
-                        <div class="job-small-details-item location">
-                            <span class="input-icon"><i class="fa-solid fa-location-dot"></i></span>
-                            <span class="word-beside-icon" id="job-location">{{ $job->location }}</span>
-                        </div>
-                        <div class="job-small-details-item time">
-                            <span class="input-icon"><i class="fa-solid fa-clock"></i></span>
-                            <span class="word-beside-icon" id="date-posted">Posted on {{ $job->created_at->format('M d, Y') }}</span>
-                        </div>
-                    </div>
-
-                    <!-- About the job -->
-                    <div class="about-the-job">
-                        <h3 class="h3">About the Job</h3>
-                        <p id="about-the-job">{{ $job->description }}</p>
+                <!-- Full name -->
+                <div class="row g-2 job-form-row">
+                    <div class="col-sm-12">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" class="form-control" id="fullName" name="fullName" placeholder="" required value="{{ old('fullName') }}" />
                     </div>
                 </div>
-            </div>
+
+                <!-- Contact number -->
+                <div class="row g-2 job-form-row">
+                    <div class="col-sm-12">
+                        <label for="contactNumber">Contact Number</label>
+                        <input type="text" class="form-control" id="contactNumber" name="contactNumber" placeholder="" required value="{{ old('contactNumber') }}" />
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="row g-2 job-form-row">
+                    <div class="col-sm-12">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="" required value="{{ old('email') }}" />
+                    </div>
+                </div>
+
+                <!-- Resume -->
+                <div class="row g-2 job-form-row">
+                    <div class="col-sm-12">
+                        <label for="resume">Upload Resume</label>
+                        <input type="file" class="form-control" id="resume" name="resume" accept=".pdf,.doc,.docx" required />
+                    </div>
+                </div>
+
+                <!-- Cover letter -->
+                <div class="row g-2 job-form-row">
+                    <div class="col-sm-12">
+                        <label for="coverLetter">Cover Letter</label>
+                        <textarea class="form-control" id="coverLetter" name="coverLetter" placeholder="Enter your cover letter here" required>{{ old('coverLetter') }}</textarea>
+                    </div>
+                </div>
+
+                <!-- Submit button -->
+                <div class="submit-button-applyjob d-flex justify-content-end">
+                    <button class="btn btn-primary" id="submit-button-applyjob" type="submit">Submit</button>
+                </div>
+            </form>
         </div>
-    </section>
+    </div>
 
     
     <!-- Footer -->

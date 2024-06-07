@@ -7,4 +7,9 @@ Feature 1.1: Search jobs
 - cards are rendered neatly with auto margin on left/right
 
 Feature 1.2: View job details
-- 
+- extra information on the job's created date
+- back button
+
+Feature 1.3: Apply job
+- submit information and will be inserted into database
+- form input validation
