@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Application;
+use App\Models\Jobs;
+use Illuminate\Support\Facades\Auth;
 
 class ApplicationController extends Controller
 {
@@ -19,26 +21,36 @@ class ApplicationController extends Controller
     public function create($jobId)
     {
         
-        $job = Job::findOrFail($jobId);
-        // return view('applications.create', compact('job'));
+        $job = Jobs::findOrFail($jobId);
+        return view('apply', compact('job'));
     }
 
-    // stores the application details from user to db
+    // stores the application details from user to db on submit
     public function store(Request $request, $jobId)
     {
         
         $request->validate([
-            'resume' => 'required',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'contact' => 'required|string|max:255',
+            'resume' => 'required|file|mimes:pdf,doc,docx|max:2048',
         ]);
 
+        $resumePath = $request->file('resume')->store('resumes','public');
+        $coverLetter = $request->input('cover_letter') ?? null;
+        
         Application::create([
             'user_id' => Auth::id(),
             'job_id' => $jobId,
-            'resume' => $request->input('resume'),
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'contact' => $request->input('contact'),
+            'resume' => $resumePath,
+            'cover_letter' => $coverLetter,
             'status' => 'pending',
         ]);
 
-        //return redirect()->route('home')->with('success', 'Application submitted successfully.');
+        return redirect()->route('home')->with('success', 'Application submitted successfully.');
     }
 
     // for admin shows more details of applicant onclick (KIV)

@@ -38,8 +38,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
 });
+
+// job apply by user
+Route::get('/jobs/{job}/apply', [ApplicationController::class, 'create'])->middleware(['auth','user'])->name('applications.create');
+Route::post('/jobs/{job}/apply', [ApplicationController::class, 'store'])->middleware(['auth','user'])->name('applications.store');
+
+
 
 Route::get('/profile/myjobs', [MyjobController::class, 'job'])->middleware(['auth','user'])->name('profile.myjobs');
 
