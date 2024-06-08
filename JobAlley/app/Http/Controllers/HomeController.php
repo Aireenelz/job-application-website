@@ -17,7 +17,9 @@ class HomeController extends Controller
 
             if($usertype=='user') //user to dashboard page
             {
-                return view('dashboard');
+                $jobs = Jobs::orderBy('id', 'desc')->get();
+                return view('dashboard', compact('jobs'));
+                
             } 
 
             else if($usertype=='admin')  // admin to admin page

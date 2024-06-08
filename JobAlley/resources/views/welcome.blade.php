@@ -79,7 +79,7 @@
             @if (Route::has('login'))
             <ul class="nav navbar-nav navbar-right pt-2 pb-2 space-y-1 ml-auto">
                     @auth
-                        <a href="{{ url('/home') }}" class="font-semibold text-blue-950 hover:text-gray-900 dark:text-blue-950 dark:hover:text-dark focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
+                        <a href="{{ url('/dashboard') }}" class="font-semibold text-blue-950 hover:text-gray-900 dark:text-blue-950 dark:hover:text-dark focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
                     @else
 
                     <li>

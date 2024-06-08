@@ -31,7 +31,7 @@
 
                 <!-- Applied Jobs content -->
                 <div x-show="tab === 'applied'">
-                    @include('profile.view-applied-jobs') 
+                    @include('profile.view-applied-jobs', ['applications' => $applications]) 
                     
                 </div>
             </div>

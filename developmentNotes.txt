@@ -18,7 +18,7 @@ When clone laravel project from team github repo, what need to do?
 6. Set up database (after db is created and credentials must match those in .env file, then run migration)
     php artisan migrate
     php artisan db::seed
-7. Install and build frontend assets if need
+7. Install and build frontend assets 
     npm install
     npm run dev
 8. Serve the application
@@ -37,3 +37,4 @@ Q&A
     - Controller.php: define the method
     - new blade.php: configure the ui
     - prev blade.php: update the route to the subsequent webpage
+- npm run dev: to compile CSS assets so that all layouts will display properly

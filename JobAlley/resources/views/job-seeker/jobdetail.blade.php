@@ -123,7 +123,7 @@
                 <ul class="navbar-nav px-4">
                 
                     <li class=" nav-item">
-                        <a href="#banner" class="nav-link font-weight-semibold text-dark">Explore Jobs</a>
+                        <a href="/" class="nav-link font-weight-semibold text-dark">Explore Jobs</a>
                     </li>
                     <li class=" nav-item">
                         <a href="/" class=" nav-link font-weight-semibold text-dark">About Us</a>
@@ -139,17 +139,17 @@
             @if (Route::has('login'))
             <ul class="nav navbar-nav navbar-right pt-2 pb-2 space-y-1 ml-auto">
                     @auth
-                        <a href="{{ url('/home') }}" class="font-semibold text-blue-950 hover:text-gray-900 dark:text-blue-950 dark:hover:text-dark focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
+                        <a href="{{ url('/home') }}" class="font-semibold text-blue-950 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
                     @else
 
                     <li>
-                        <a href="{{ route('login') }}" class="ml-4 font-semibold text-blue-950 hover:text-gray-900 dark:text-blue-950 dark:hover:text-dark focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                        <a href="{{ route('login') }}" class="ml-4 font-semibold text-blue-950 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
                            Log In</a>
                     </li>
 
                         @if (Route::has('register'))
                         <li>
-                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-blue-950 hover:text-gray-900 dark:text-blue-950 dark:hover:text-dark focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                            <a href="{{ route('register') }}" class="ml-4 font-semibold text-blue-950 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
                                    Register</a>
                         </li>
                         @endif
@@ -184,6 +184,10 @@
             
                         <!-- Job small details -->
                         <div class="job-small-details job-small-details-jobdetails">
+                            <div class="job-small-details-item company">
+                                <span class="input-icon"><i class="fa-solid fa-briefcase"></i></span>
+                                <span class="word-beside-icon" id="company-name">{{ $job->company }}</span>
+                            </div>
                             <div class="job-small-details-item location">
                                 <span class="input-icon"><i class="fa-solid fa-location-dot"></i></span>
                                 <span class="word-beside-icon" id="job-location">{{ $job->location }}</span>

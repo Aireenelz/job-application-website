@@ -25,11 +25,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/*
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-*/
+
 // auth aka registered users only can view home and the other pages 
 route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
 
@@ -40,10 +40,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
 });
 
-Route::get('/profile/myjobs', [MyjobController::class, 'job'])->middleware(['auth','user'])->name('profile.myjobs');
+// job apply by user
+Route::get('/jobs/{job}/apply', [ApplicationController::class, 'create'])->middleware(['auth','user'])->name('applications.create');
+Route::post('/jobs/{job}/apply', [ApplicationController::class, 'store'])->middleware(['auth','user'])->name('applications.store');
+
+Route::get('/profile/myjobs', [MyjobController::class, 'job'])
+    ->middleware(['auth', 'user'])
+    ->name('profile.myjobs');
+
+/*view applied jobs
+Route::get('/profile/view-applied-jobs', [ApplicationController::class, 'index'])
+    ->middleware(['auth', 'user'])
+    ->name('profile.view-applied-jobs');
+*/
 
 Route::middleware(['auth', 'admin'])->group(function () {
     
@@ -55,7 +66,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     //applicants part
     Route::resource('application', ApplicationController::class);
-    //Route::post('application/{id}/forward', 'ApplicationController@forward')->name('application.forward');
+    Route::post('application/{id}/forward', [ApplicationController::class, 'forward'])->name('application.forward');
 });
 
 // Job seeker module
