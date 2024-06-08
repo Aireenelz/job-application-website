@@ -40,7 +40,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::post('/jobsearch/detail/{jobId}/apply', [ApplicationController::class, 'store'])->name('application.store');
 
 });
 
@@ -64,6 +63,7 @@ Route::get('/jobsearch', [JobsListController::class, 'index'])->name('jobsearch'
 Route::get('/jobsearch/filter', [JobsListController::class, 'filter'])->name('jobsearch.filter');
 Route::get('/jobsearch/detail/{id}', [JobsListController::class, 'detail'])->name('jobsearch.detail');
 Route::get('/jobsearch/detail/{id}/apply', [JobsListController::class, 'apply'])->name('jobsearch.detail.apply');
+Route::post('/jobsearch/detail/{jobId}/apply', [ApplicationController::class, 'store'])->name('application.store');
 
 
 require __DIR__.'/auth.php';
