@@ -44,9 +44,15 @@ Route::middleware('auth')->group(function () {
 Route::get('/jobs/{job}/apply', [ApplicationController::class, 'create'])->middleware(['auth','user'])->name('applications.create');
 Route::post('/jobs/{job}/apply', [ApplicationController::class, 'store'])->middleware(['auth','user'])->name('applications.store');
 
+Route::get('/profile/myjobs', [MyjobController::class, 'job'])
+    ->middleware(['auth', 'user'])
+    ->name('profile.myjobs');
 
-
-Route::get('/profile/myjobs', [MyjobController::class, 'job'])->middleware(['auth','user'])->name('profile.myjobs');
+/*view applied jobs
+Route::get('/profile/view-applied-jobs', [ApplicationController::class, 'index'])
+    ->middleware(['auth', 'user'])
+    ->name('profile.view-applied-jobs');
+*/
 
 Route::middleware(['auth', 'admin'])->group(function () {
     
@@ -58,7 +64,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     //applicants part
     Route::resource('application', ApplicationController::class);
-    //Route::post('application/{id}/forward', 'ApplicationController@forward')->name('application.forward');
+    Route::post('application/{id}/forward', [ApplicationController::class, 'forward'])->name('application.forward');
 });
 
 

@@ -11,24 +11,26 @@
                 {{ __('All the best in your application! ') }}
             </p>
         </header>
-
+        
         <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 gap-6">
+        
             <!-- Dummy data for applied jobs -->
-            @for ($i = 1; $i <= 6; $i++)
+            @foreach($applications as $application)
+            
                 <div class="bg-gray-100 p-4 rounded-lg shadow relative">
-                    <h5 class="font-semibold">Job Title {{ $i }}</h5>
-                    <p>Company {{ $i }}</p>
-                    <p>Location {{ $i }}</p>
-                    
+                    <h5 class="font-semibold text-lg">{{ $application->job->position}}</h5>
+                    <p class="mt-2 text-gray-600">{{ $application->job->company }}</p>
+                    <p class="mt-2 text-gray-600">{{ $application->job->location }}</p>
+                    <p class="mt-2 text-gray-600">{{ $application->job->description }}</p>
+
                     <div class="flex justify-end">
                         <x-danger-button
                             x-data=""
                             x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')">{{ __('Delete Application') }}
                         </x-danger-button>
-                    </div>
-                    
+                    </div>  
                 </div>
-            @endfor
+            @endforeach
             
             <!-- modal -->
             <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
