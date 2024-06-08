@@ -9,14 +9,13 @@ class MyjobController extends Controller
 {
     public function job()
     {
-        //return view('profile.myjobs');
-        // get logged in user id 
+    
+        // get user logged in
         $user = auth()->user();
 
-        // Retrieve the applications for the current user with the related job data
         $applications = Application::where('user_id', $user->id)->with('job')->get();
 
-        // Pass the applications data to the view
         return view('profile.myjobs', compact('applications'));
+        //return view('profile.myjobs');
     }
 }

@@ -14,7 +14,7 @@
         
         <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 gap-6">
         
-            <!-- Dummy data for applied jobs -->
+            <!-- view applied jobs -->
             @foreach($applications as $application)
             
                 <div class="bg-gray-100 p-4 rounded-lg shadow relative">
@@ -23,18 +23,25 @@
                     <p class="mt-2 text-gray-600">{{ $application->job->location }}</p>
                     <p class="mt-2 text-gray-600">{{ $application->job->description }}</p>
 
-                    <div class="flex justify-end">
-                        <x-danger-button
-                            x-data=""
-                            x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')">{{ __('Delete Application') }}
-                        </x-danger-button>
-                    </div>  
+                    <!-- user cannot delete if admin already sent email to company -->
+                    @if ($application->status !== 'approved')
+                        <div class="flex justify-start mt-4">
+                            <x-danger-button
+                                x-data=""
+                                x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')">{{ __('Delete Application') }}
+                            </x-danger-button>
+                        </div>  
+                    @else
+                        <div class="flex justify-start mt-4">
+                            <span class="text-green-500">{{ __('Employer received!') }}</span>
+                        </div>
+                    @endif
                 </div>
             @endforeach
             
             <!-- modal -->
             <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
-                <form method="post" action="#" class="p-6">
+                <form method="post" action="{{ route('application.destroy', ['application' => $application->id]) }}" class="p-6">
                     @csrf
                     @method('delete')
 
