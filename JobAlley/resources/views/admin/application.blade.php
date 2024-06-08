@@ -56,31 +56,35 @@
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200 ">
                                     @forelse ($applications as $application)
-                                    <tr class="hover:bg-blue-200 hover:text-white ">
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                    <tr class="hover:bg-blue-200 hover:text-white dark:hover:bg-blue-700 ">
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium ">
                                             {{$application->job->id}}
                                         </td>
-                                        <td class="text-sm text-gray-900 px-6 py-6 whitespace-nowrap">
+                                        <td class="text-sm px-6 py-6 whitespace-nowrap">
                                             {{$application->user->name}}
                                         </td>
-                                        <td class="text-sm text-gray-900 px-6 py-6 whitespace-nowrap">
+                                        <td class="text-sm px-6 py-6 whitespace-nowrap">
                                             {{$application->user->email}}
                                         </td>
-                                        <td class="text-sm text-gray-900 px-6 py-6">
-                                            {{$application->user->contact}}
+                                        <td class="text-sm px-6 py-6">
+                                            {{$application->contact}}
+                                        </td>
+                                        <td class="text-sm px-6 py-6 whitespace-nowrap">
+                                            <a href="{{ asset('storage/' . $application->resume) }}" target="_blank" class="px-5 py-2 bg-blue-500 rounded-md text-white text-base shadow-md">View Resume</a>
                                         </td>
                                         <td>
-                                            <a href="{{ asset('storage/' . $application->resume) }}" target="_blank">View Resume</a>
-                                        </td>
-                                        <td>
-                                            <a href="{{ asset('storage/' . $application->coverletter) }}" target="_blank">View CV</a>
+                                            @if ($application->coverletter)
+                                                <a href="{{ asset('storage/' . $application->coverletter) }}" target="_blank" class="px-5 py-2 bg-blue-500 rounded-md text-white text-base shadow-md">View CV</a>
+                                            @else
+                                                <p class="text-sm">No CV attached</p>
+                                            @endif
                                         </td>
                                         <td>
                                             {{ ucfirst($application->status) }}
                                         </td>
                                         <td>
                                             @if ($application->status == 'pending')
-                                            <form action="{{ route('admin.forward', $application->id) }}" method="POST">
+                                            <form action="{{ route('application.forward', $application->id) }}" method="POST">
                                                 @csrf
                                                 <button type="submit">Forward</button>
                                             </form>

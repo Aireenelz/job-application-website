@@ -4,16 +4,39 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Application;
+use App\Models\Jobs;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ForwardMail;
+
 use Illuminate\Support\Facades\Auth;
 
 class ApplicationController extends Controller
 {
     // all applicants for admin view
+
     public function index() 
     {
-        $applications = Application::with('user', 'job')->get(); 
+
+        if(Auth::id())
+        {
+            $usertype = Auth()->user()->usertype;
+
+            if($usertype=='user') //user to dashboard page
+            {
+                $applications = Application::with('user', 'job')->get(); 
+                
+                return view('profile.view-applied-jobs', compact('applications'));
+                
+            } 
+
+            else if($usertype=='admin')  // admin to admin page
+            {
+                $applications = Application::with('user', 'job')->get(); 
         
-        return view( 'admin.application', compact( 'applications'));
+                return view( 'admin.application', compact( 'applications'));
+            }
+            
+        }
     }
 
     // for user to apply
@@ -24,7 +47,7 @@ class ApplicationController extends Controller
         return view('job-seeker.jobapply', compact('jobId', 'job'));
     }
 
-    // stores the application details from user to db
+    // stores the application details from user to db on submit
     public function store(Request $request, $jobId)
     {
         
@@ -61,12 +84,12 @@ class ApplicationController extends Controller
     public function forward($id)
     {
         $application = Application::findOrFail($id);
-        $application->status = 'forwarded';
+        $application->status = 'approved';
         $application->save();
 
         // Send email to the company
-        Mail::to($application->job->company->email)->send(new ApplicationForwarded($application));
+        Mail::to('receipentemail@gmail.com')->send(new ForwardMail($application->user->name, $application, $application->resume));
 
-        //return redirect()->route('admin.applications.index')->with('success', 'Application forwarded to the company.');
+        return redirect()->route('application.index')->with('success', 'Application forwarded to the company.');
     }
 }
