@@ -15,6 +15,12 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+
+                    @if(auth()->user()->usertype === 'admin')
+                    <x-nav-link :href="route('application.index')" :active="request()->routeIs('application.index')">
+                        {{ __('Applicants') }}
+                    </x-nav-link>
+                    @endif
                 </div>
             </div>
 
@@ -37,6 +43,13 @@
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
+
+                        <!-- Myjobs (user access only) -->
+                        @if(auth()->user()->usertype === 'user')
+                            <x-dropdown-link :href="route('profile.myjobs')">
+                                {{ __('My Jobs') }}
+                            </x-dropdown-link>
+                        @endif
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
