@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Application;
 use App\Models\Jobs;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ForwardMail;
 
+use Illuminate\Support\Facades\Auth;
 
 class ApplicationController extends Controller
 {
@@ -43,8 +43,8 @@ class ApplicationController extends Controller
     public function create($jobId)
     {
         
-        $job = Jobs::findOrFail($jobId);
-        return view('apply', compact('job'));
+        $job = Job::findOrFail($jobId);
+        return view('job-seeker.jobapply', compact('jobId', 'job'));
     }
 
     // stores the application details from user to db on submit
@@ -52,23 +52,22 @@ class ApplicationController extends Controller
     {
         
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'contact' => 'required|string|max:255',
-            'resume' => 'required|file|mimes:pdf,doc,docx|max:2048',
+            'fullName' => 'required',
+            'contactNumber' => 'required',
+            'email' => 'required|email',
+            'resume' => 'required',
+            'coverLetter' => 'required',
         ]);
 
-        $resumePath = $request->file('resume')->store('resumes','public');
-        $coverLetter = $request->input('cover_letter') ?? null;
-        
+        // Save application details to the database
         Application::create([
             'user_id' => Auth::id(),
             'job_id' => $jobId,
-            'name' => $request->input('name'),
+            'name' => $request->input('fullName'),
+            'contact' => $request->input('contactNumber'),
             'email' => $request->input('email'),
-            'contact' => $request->input('contact'),
-            'resume' => $resumePath,
-            'cover_letter' => $coverLetter,
+            'resume' => $request->input('resume'),
+            'cover_letter' => $request->input('coverLetter'),
             'status' => 'pending',
         ]);
 

@@ -1,0 +1,39 @@
+When clone laravel project from team github repo, what need to do?
+1. Clone the repo:
+    git clone https://github.com/your-team/your-laravel-project.git
+    cd your-laravel-project
+2. Install dependencies
+    composer install
+3. Set up environment file (copy the example env file to create a new .env file)
+    cp .env.example .env
+4. Generate application key
+    php artisan key:generate
+5. Configure .env file
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=your_database_name
+    DB_USERNAME=your_database_username
+    DB_PASSWORD=your_database_password
+6. Set up database (after db is created and credentials must match those in .env file, then run migration)
+    php artisan migrate
+    php artisan db::seed
+7. Install and build frontend assets if need
+    npm install
+    npm run dev
+8. Serve the application
+    php artisan Serve
+
+Q&A 
+- do i need to run "php artisan migrate" everytime i pull codes from github repo = yes if have new database schema changes
+- during development process: 
+    - run frontend: php artisan serve
+    - run backend: open xampp and run apache & mysql
+- how to see database:
+    - http://localhost/phpmyadmin/
+- routes/web.php: is where we define all the routes
+- how to configured route to a webpage:
+    - web.php: define route
+    - Controller.php: define the method
+    - new blade.php: configure the ui
+    - prev blade.php: update the route to the subsequent webpage

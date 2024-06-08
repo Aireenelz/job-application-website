@@ -26,10 +26,25 @@
 
         
         <style>
-            body {font-family: Figtree, sans-serif;}
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                font-family: Figtree, sans-serif;
+            }
             .jumbotron {
                 background-color: #CCCCFF;
                 color: #fff;
+            }
+            .navbar-toggler {
+                background-color: #CCCCFF;
+            }
+            .nav-item {
+                padding: 0 5px;
+            }
+            .nav-item:hover {
+                background-color: #D3D3D3;
+                border-radius: 5px;
             }
         </style>
 
@@ -41,7 +56,7 @@
         <div class="container">
             
             
-            <a class="navbar-brand mt-2 font-weight-bold text-dark" href="/">JobAlley</a>
+            <a class="navbar-brand mt-0 font-weight-bold text-dark" href="/">JobAlley</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -107,40 +122,43 @@
 
         </div>
 
-        <!-- Job listings section -->
+        <!-- Job search feature intro section -->
         <section class="head pb-5" id="jobs">
             <div class="container py-5"> 
-                <h1 class="font-weight-light text-center py-3">Featured Jobs</h1>
-                <div class="row">
-                    <!-- Sample job listing 1 -->
-                    <div class="col-md-4">
+                <h1 class="font-weight-light text-center py-3">Explore Jobs</h1>
+                <div class="row d-flex">
+                    <!-- Intro 1 -->
+                    <div class="col-md-4 d-flex align-items-stretch">
                         <div class="card mb-4 box-shadow">
                             <div class="card-body">
-                                <h5 class="card-title">Job Title 1</h5>
-                                <p class="card-text">Description of the Job</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a href="{{ route('login') }}" class="btn btn-sm btn-outline-secondary">View Details</a>
-                                    </div>
-                                </div>
+                                <h5 class="card-title">Search for jobs</h5>
+                                <p class="card-text">Find the perfect match for your skills and expertise effortlessly.</p>
                             </div>
                         </div>
                     </div>
-                    <!-- card 2 -->
-                    <div class="col-md-4">
+                    <!-- Intro 2 -->
+                    <div class="col-md-4 d-flex align-items-stretch">
                         <div class="card mb-4 box-shadow">
                             <div class="card-body">
-                                <h5 class="card-title">Job Title 2</h5>
-                                <p class="card-text">Description of the Job</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <a href="{{ route('login') }}" class="btn btn-sm btn-outline-secondary">View Details</a>
-                                    </div>
-                                </div>
+                                <h5 class="card-title">View job details</h5>
+                                <p class="card-text">Dive deep into job descriptions to make informed decisions about your next career move.</p>
                             </div>
                         </div>
                     </div>
-                    
+                    <!-- Intro 3 -->
+                    <div class="col-md-4 d-flex align-items-stretch">
+                        <div class="card mb-4 box-shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">Apply and submit job application</h5>
+                                <p class="card-text">Streamline your application process and connect with potential employers seamlessly.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end align-items-center">
+                    <div class="btn-group" id="more-jobs-button">
+                        <a href="{{ route('jobsearch') }}" class="btn btn-sm btn-outline-primary">More Jobs &nbsp; &rarr;</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -195,7 +213,7 @@
                                     </div>
                                     <div class="col-lg-10 col-md-9 col-sm-9">
                                         <h3> Give us a call </h3>
-                                        <p>Mr Gojo Satoru <br> 
+                                        <p>Mr. Gojo Satoru <br> 
                                         +60 4 587 3641 , <br>
                                         Mon - Fri || 8:00 am - 6:00 pm</p>
                                     </div>

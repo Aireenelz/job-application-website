@@ -8,6 +8,8 @@ use App\Http\Controllers\MyjobController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\JobsController;
 
+use App\Http\Controllers\JobsListController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -67,6 +69,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('application/{id}/forward', [ApplicationController::class, 'forward'])->name('application.forward');
 });
 
+// Job seeker module
+Route::get('/jobsearch', [JobsListController::class, 'index'])->name('jobsearch');
+Route::get('/jobsearch/filter', [JobsListController::class, 'filter'])->name('jobsearch.filter');
+Route::get('/jobsearch/detail/{id}', [JobsListController::class, 'detail'])->name('jobsearch.detail');
+Route::get('/jobsearch/detail/{id}/apply', [JobsListController::class, 'apply'])->name('jobsearch.detail.apply');
+Route::post('/jobsearch/detail/{jobId}/apply', [ApplicationController::class, 'store'])->name('application.store');
 
 
 require __DIR__.'/auth.php';
