@@ -184,6 +184,10 @@
             
                         <!-- Job small details -->
                         <div class="job-small-details job-small-details-jobdetails">
+                            <div class="job-small-details-item company">
+                                <span class="input-icon"><i class="fa-solid fa-briefcase"></i></span>
+                                <span class="word-beside-icon" id="company-name">{{ $job->company }}</span>
+                            </div>
                             <div class="job-small-details-item location">
                                 <span class="input-icon"><i class="fa-solid fa-location-dot"></i></span>
                                 <span class="word-beside-icon" id="job-location">{{ $job->location }}</span>
