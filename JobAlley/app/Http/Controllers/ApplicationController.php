@@ -74,13 +74,7 @@ class ApplicationController extends Controller
         return redirect()->route('home')->with('success', 'Application submitted successfully.');
     }
 
-    // for admin shows more details of applicant onclick (KIV)
-    public function show($id)
-    {
-        $application = Application::findOrFail($id);
-        //return view('admin.applications.show', compact('application'));
-    }
-
+    // admin forward the applicantions to company
     public function forward($id)
     {
         $application = Application::findOrFail($id);
@@ -91,5 +85,16 @@ class ApplicationController extends Controller
         Mail::to('receipentemail@gmail.com')->send(new ForwardMail($application->user->name, $application, $application->resume));
 
         return redirect()->route('application.index')->with('success', 'Application forwarded to the company.');
+    }
+
+    // user can delete their application only if it has not been forwarded by admin
+    public function delete($id)
+    {
+        $application = Application::findOrFail($id)->delete();
+        if ($application) {
+            return redirect()->route('profile.myjobs')->with('success', 'Application deleted.');
+        } else {
+            return redirect()->route('profile.myjobs')->with('failure', 'An unexpected error occured, unable to delete application.');
+        }
     }
 }

@@ -35,27 +35,22 @@ route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name(
 
 route::get('post', [HomeController::class, 'post'])->middleware(['auth','admin']);
 
-
+// profile section
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// job apply by user
-Route::get('/jobs/{job}/apply', [ApplicationController::class, 'create'])->middleware(['auth','user'])->name('applications.create');
-Route::post('/jobs/{job}/apply', [ApplicationController::class, 'store'])->middleware(['auth','user'])->name('applications.store');
 
-Route::get('/profile/myjobs', [MyjobController::class, 'job'])
-    ->middleware(['auth', 'user'])
-    ->name('profile.myjobs');
+// user my jobs section
+Route::middleware(['auth', 'user'])->group(function () {
+    Route::get('/profile/view-applied-jobs', [ApplicationController::class, 'index'])->name('profile.view-applied-jobs');
+    Route::get('/profile/myjobs', [MyjobController::class, 'job'])->name('profile.myjobs');
+    Route::delete('/application/{id}', [ApplicationController::class, 'delete'])->name('application.destroy');
+});
 
-/*view applied jobs
-Route::get('/profile/view-applied-jobs', [ApplicationController::class, 'index'])
-    ->middleware(['auth', 'user'])
-    ->name('profile.view-applied-jobs');
-*/
-
+// admin crud function
 Route::middleware(['auth', 'admin'])->group(function () {
     
     Route::get('/create', [JobsController::class, 'create'])->name('create');
