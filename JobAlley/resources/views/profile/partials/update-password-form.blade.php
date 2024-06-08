@@ -1,4 +1,3 @@
-<script src="https://cdn.tailwindcss.com"></script>
 <section>
     <header>
         <h2 class="text-lg font-medium text-gray-900">
@@ -6,31 +5,13 @@
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __('Ensure your account is save by making your passwords with minimum of 8 letters') }}
+            {{ __('Ensure your account is using a long, random password to stay secure.') }}
         </p>
     </header>
 
     <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
         @csrf
         @method('put')
-
-        <!-- Error Banner -->
-        @if ($errors->any())
-            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                <strong class="font-bold">Oops!</strong>
-                @foreach ($errors-all() as $error)
-                    <span class="block sm:inline">{{ $error }}</span>
-                @endforeach
-            </div>
-        @endif
-
-        <!-- Success Banner -->
-        @if (session('status') === 'password-updated')
-            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-                <strong class="font-bold">Success!</strong>
-                <span class="block sm:inline">{{ __('New Data Saved.') }}</span>
-            </div>
-        @endif
 
         <div>
             <x-input-label for="update_password_current_password" :value="__('Current Password')" />

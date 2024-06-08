@@ -13,3 +13,4 @@ Feature 1.2: View job details
 Feature 1.3: Apply job
 - submit information and will be inserted into database
 - form input validation
+- upon successful submission (insertion), will return to dashboard (/home)
