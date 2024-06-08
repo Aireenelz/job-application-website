@@ -7,7 +7,6 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -32,13 +31,6 @@
             <main>
                 {{ $slot }}
             </main>
-        </div>
-
-        <!---footer-->
-        <div class="bg-light py-4">
-            <div class="container text-center">
-                <p class="text-muted mb-0 py-2"> © 2024 Copyright JobAlley.com</p>
-            </div>
         </div>
     </body>
 </html>

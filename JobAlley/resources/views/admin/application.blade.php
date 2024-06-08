@@ -56,7 +56,7 @@
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200 ">
                                     @forelse ($applications as $application)
-                                    <tr class="hover:bg-blue-200 hover:text-white dark:hover:bg-blue-700 ">
+                                    <tr class="hover:bg-blue-200 hover:text-white ">
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                             {{$application->job->id}}
                                         </td>

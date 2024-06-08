@@ -32,7 +32,7 @@
             </label>
         </div>
 
-        <div class="flex items-center justify-between mt-4">
+        <div class="flex items-center justify-end mt-4">
             @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
@@ -42,19 +42,6 @@
             <x-primary-button class="ms-3">
                 {{ __('Log in') }}
             </x-primary-button>
-
         </div>
-
-
     </form>
-
-    <!-- Horizontal Rule -->
-    <hr class="my-6 border-gray-300 w-full mt-4">
-
-    <!-- Create Account Link -->
-    <div class="flex items-center justify-center mt-4">
-        <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('register') }}">
-            {{ __('Create new account') }}
-        </a>
-    </div>
 </x-guest-layout>

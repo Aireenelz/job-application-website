@@ -37,3 +37,4 @@ Q&A
     - Controller.php: define the method
     - new blade.php: configure the ui
     - prev blade.php: update the route to the subsequent webpage
+- npm run dev: to compile CSS assets
