@@ -13,24 +13,16 @@ class HomeController extends Controller
     {
         if(Auth::id())
         {
-            $usertype = Auth()->user()->usertype;
+            $usertype=Auth()->user()->usertype;
 
-            if($usertype=='user') //user to dashboard page
+            if($usertype=='user')
             {
-                $jobs = Jobs::orderBy('id', 'desc')->get();
-                return view('dashboard', compact('jobs'));
-                
-            } 
-
-            else if($usertype=='admin')  // admin to admin page
-            {
-                $jobs = Jobs::orderBy('id', 'desc')->get();
-                return view('admin.adminhome', compact('jobs'));
+                return view('dashboard');
             }
-
-            else 
+            else if($usertype=='admin')
             {
-                return redirect()->back();
+                //return view('admin.adminhome');
+                return app(JobsController::class)->index();
             }
         }
     }
