@@ -16,6 +16,12 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
+                    @if(auth()->user()->usertype === 'user')
+                    <x-nav-link :href="route('jobsearch')" :active="request()->routeIs('jobsearch')">
+                        {{ __('Explore Jobs') }}
+                    </x-nav-link>
+                    @endif
+
                     @if(auth()->user()->usertype === 'admin')
                     <x-nav-link :href="route('application.index')" :active="request()->routeIs('application.index')">
                         {{ __('Applicants') }}
