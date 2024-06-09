@@ -350,18 +350,19 @@
             </div>
         </section>
 
-        <!--about section--->
+        <!-- About section--->
         <section class="head pb-5" id="about">
             <div class="container py-5"> 
                 <div class="card">
                     <div class="card-body">
                         <h1 class="font-weight-light text-center py-3">About Us</h1>
-                        <div class="flex justify-center">
-                            <h5>Established in 2024, JobAlley was created from the study hall in which the two developers
-                                    were meeting up for a chat. In the struggle of finding their own jobs, they decided to develop their
-                                    own job portal! 
-                            </h5>
-                        </div>
+                        <hr>
+
+                        <h2>Our Mission</h2>
+                        <p>Our mission is to create a dynamic and user-friendly job portal that bridges the gap between job seekers and employers. We strive to provide a comprehensive platform that offers seamless job searching, application, and recruitment processes, while ensuring user engagement and support through innovative features and personalized experiences.</p>
+
+                        <h2>Our Vision</h2>
+                        <p>Our vision is to be the leading job portal that empowers job seekers to find their dream jobs and enables employers to discover top talent effortlessly. We aim to continuously innovate and enhance our platform to support the evolving needs of the job market, fostering a community where career opportunities and professional growth are accessible to everyone.</p>
                     </div>
                 </div>
             </div>
