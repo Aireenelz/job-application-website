@@ -368,13 +368,15 @@
             </div>
         </section>
 
-        <!--contact section--->
+        <!-- Contact and feedback section--->
         <section class="head pb-5" id="contact">
             <div class="container py-5"> 
                 <div class="card">
                     <div class="card-body">
                         <h1 class="font-weight-light text-center py-3">Contact Us</h1>
                         <div class="row">
+
+                            <!-- Contact info -->
                             <div class="col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="row pt-3">
                                     <div class="col-lg-1 offset-1 col-md-2 col-sm-2 col-2">
@@ -407,14 +409,21 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Feedback form -->
                             <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                                <form>
+                                <form action="https://api.web3forms.com/submit" method="POST">
+                                    <input type="hidden" name="access_key" value="{{ env('WEB3FORMS_API_KEY') }}">
+
                                     <label>Name</label>
-                                    <input type="text" class="form-control mb-2" placeholder="Name">
+                                    <input type="text" class="form-control mb-2" name="name" placeholder="Name" required>
+
                                     <label>Email</label>
-                                    <input type="email" class="form-control mb-2" placeholder="Email">
+                                    <input type="email" class="form-control mb-2" name="email" placeholder="Email" required>
+
                                     <label>Your Message</label>
-                                    <textarea class="form-control mb-2" placeholder="Message" id="" col="10" rows="5"></textarea>
+                                    <textarea class="form-control mb-2" name="message" placeholder="Message" cols="10" rows="5" required></textarea>
+
                                     <div class="p-2 w-full">
                                         <button type="submit" class="btn btn-primary float-right">Send</button>
                                     </div>
