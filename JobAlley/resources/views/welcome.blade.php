@@ -350,30 +350,33 @@
             </div>
         </section>
 
-        <!--about section--->
+        <!-- About section--->
         <section class="head pb-5" id="about">
             <div class="container py-5"> 
                 <div class="card">
                     <div class="card-body">
                         <h1 class="font-weight-light text-center py-3">About Us</h1>
-                        <div class="flex justify-center">
-                            <h5>Established in 2024, JobAlley was created from the study hall in which the two developers
-                                    were meeting up for a chat. In the struggle of finding their own jobs, they decided to develop their
-                                    own job portal! 
-                            </h5>
-                        </div>
+                        <hr>
+
+                        <h2>Our Mission</h2>
+                        <p>Our mission is to create a dynamic and user-friendly job portal that bridges the gap between job seekers and employers. We strive to provide a comprehensive platform that offers seamless job searching, application, and recruitment processes, while ensuring user engagement and support through innovative features and personalized experiences.</p>
+
+                        <h2>Our Vision</h2>
+                        <p>Our vision is to be the leading job portal that empowers job seekers to find their dream jobs and enables employers to discover top talent effortlessly. We aim to continuously innovate and enhance our platform to support the evolving needs of the job market, fostering a community where career opportunities and professional growth are accessible to everyone.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!--contact section--->
+        <!-- Contact and feedback section--->
         <section class="head pb-5" id="contact">
             <div class="container py-5"> 
                 <div class="card">
                     <div class="card-body">
                         <h1 class="font-weight-light text-center py-3">Contact Us</h1>
                         <div class="row">
+
+                            <!-- Contact info -->
                             <div class="col-lg-6 col-md-12 col-sm-12 col-12">
                                 <div class="row pt-3">
                                     <div class="col-lg-1 offset-1 col-md-2 col-sm-2 col-2">
@@ -406,14 +409,21 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Feedback form -->
                             <div class="col-lg-6 col-md-12 col-sm-12 col-12">
-                                <form>
+                                <form action="https://api.web3forms.com/submit" method="POST">
+                                    <input type="hidden" name="access_key" value="{{ env('WEB3FORMS_API_KEY') }}">
+
                                     <label>Name</label>
-                                    <input type="text" class="form-control mb-2" placeholder="Name">
+                                    <input type="text" class="form-control mb-2" name="name" placeholder="Name" required>
+
                                     <label>Email</label>
-                                    <input type="email" class="form-control mb-2" placeholder="Email">
+                                    <input type="email" class="form-control mb-2" name="email" placeholder="Email" required>
+
                                     <label>Your Message</label>
-                                    <textarea class="form-control mb-2" placeholder="Message" id="" col="10" rows="5"></textarea>
+                                    <textarea class="form-control mb-2" name="message" placeholder="Message" cols="10" rows="5" required></textarea>
+
                                     <div class="p-2 w-full">
                                         <button type="submit" class="btn btn-primary float-right">Send</button>
                                     </div>

@@ -1,5 +1,4 @@
-Module 1: JOB SEEKER
-
+Module 1: JOB SEEKER ==========================================================================================================================
 Feature 1.1: Search jobs
 - retrieve and display list of jobs from database
 - filter based on position and location and will re-render the list of jobs from database according to filter query value
@@ -14,3 +13,17 @@ Feature 1.3: Apply job
 - submit information and will be inserted into database
 - form input validation
 - upon successful submission (insertion), will return to dashboard (/home)
+
+Module 3: USER ENGAGEMENT & SUPPORT ===========================================================================================================
+Feature 2.1: View company information
+- about, location, contact info 
+
+Feature 2.2: Submit feedback
+- fill in a form
+- the feeddback will be forwarded to our team's email so that we can take note of the feedback and improve our website/service
+
+Feature 2.3: Chatbot functionality
+- using openai api
+- configured ui (collapsible chatbox)
+- user can enter prompt and response will be fetched and displayed in the ui 
+- to facilitatae job seekers inquire about general employment related questions
