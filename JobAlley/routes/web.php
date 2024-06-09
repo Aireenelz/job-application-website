@@ -25,15 +25,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+/*
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+*/
+
 
 // auth aka registered users only can view home and the other pages 
 route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
-
-route::get('post', [HomeController::class, 'post'])->middleware(['auth','admin']);
 
 // profile section
 Route::middleware('auth')->group(function () {
