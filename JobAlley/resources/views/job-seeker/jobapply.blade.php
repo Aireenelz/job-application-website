@@ -158,9 +158,8 @@
         <div class="section apply-job">
             <div class="col-md-6" id="apply-job">
                 
-                <form class="apply-job-form" id="apply-job-form" action="{{ route('application.store', ['jobId' => $job->id]) }}" method="POST">
+                <form class="apply-job-form" id="apply-job-form" action="{{ route('application.store', ['jobId' => $job->id]) }}" method="POST" enctype="multipart/form-data">
                     @csrf     
-
                     <!-- Full name -->
                     <div class="row g-2 job-form-row">
                         <div class="col-sm-12">

@@ -55,9 +55,12 @@ class ApplicationController extends Controller
             'fullName' => 'required',
             'contactNumber' => 'required',
             'email' => 'required|email',
-            'resume' => 'required',
+            'resume' => 'required|file|mimes:pdf,doc,docx|max:2048',
             'coverLetter' => 'required',
         ]);
+        
+        //store resume in storage so admin can view live
+        $resumePath = $request->file('resume')->store('resumes','public');
 
         // Save application details to the database
         Application::create([
@@ -66,11 +69,11 @@ class ApplicationController extends Controller
             'name' => $request->input('fullName'),
             'contact' => $request->input('contactNumber'),
             'email' => $request->input('email'),
-            'resume' => $request->input('resume'),
+            'resume' => $resumePath,
             'cover_letter' => $request->input('coverLetter'),
             'status' => 'pending',
         ]);
-
+        
         return redirect()->route('home')->with('success', 'Application submitted successfully.');
     }
 
