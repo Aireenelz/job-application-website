@@ -21,21 +21,21 @@
                     @csrf
                     <div class="mb-4  ">
                         <label for="position" class="text-md font-bold">Job Position</label>
-                        <input type="text" name="position" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-emerald-500 focus:ring focus:ring-emerald-200 focus:ring-opacity-50" id="position">
+                        <input type="text" name="position" id="position" value="{{ old('position') }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-emerald-500 focus:ring focus:ring-emerald-200 focus:ring-opacity-50" id="position">
                         @error('position')
                         <span class="text-red-500">{{$message}}</span>
                         @enderror
                     </div>
                     <div class="mb-4  ">
                         <label for="company" class="text-md font-bold">Company</label>
-                        <input type="text" name="company" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-emerald-500 focus:ring focus:ring-emerald-200 focus:ring-opacity-50" id="company">
+                        <input type="text" name="company" id="company" value="{{ old('company') }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-emerald-500 focus:ring focus:ring-emerald-200 focus:ring-opacity-50" id="company">
                         @error('company')
                         <span class="text-red-500">{{$message}}</span>
                         @enderror
                     </div>
                     <div class="mb-4 ">
                         <label for="location" class="text-md font-bold">Location</label>
-                        <input type="text" name="location" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-emerald-500 focus:ring focus:ring-emerald-200 focus:ring-opacity-50" id="location">
+                        <input type="text" name="location" id="location" value="{{ old('location') }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-emerald-500 focus:ring focus:ring-emerald-200 focus:ring-opacity-50" id="location">
                         @error('location')
                         <span class="text-red-500">{{$message}}</span>
                         @enderror
@@ -47,12 +47,32 @@
                         <span class="text-red-500">{{$message}}</span>
                         @enderror
                     </div>
-                    <div class="flex justify-end">
-                        <button class="px-4 py-2 rounded-md text-black text-sm font-medium shadow-md mb-4 ml-4" style="background-color: #10b981;">Save</button>
+                    <div class="flex justify-center">
+                        <button class="px-4 py-2 bg-green-500 text-white font-semibold rounded-md shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-75">Save</button>
                     </div>
                 </form>
             </div>
         
         </div>
     </div>
+
+    <!--validation script-->
+    <script>
+        function validateForm() {
+            
+            var position = document.getElementById('position').value;
+            var company = document.getElementById('company').value;
+            var location = document.getElementById('location').value;
+            var description = document.getElementById('description').value;
+
+            // check empty
+            if (!position || !company || !location || !description) {
+                alert('All fields are required before saving.');
+                return false; 
+            }
+            return true; 
+        }
+    </script>
+
+
 </x-app-layout>

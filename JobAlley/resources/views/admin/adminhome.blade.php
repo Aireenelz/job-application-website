@@ -58,7 +58,7 @@
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200 ">
                                     @forelse ($jobs as $job)
-                                    <tr class="hover:bg-blue-200 hover:text-white dark:hover:bg-blue-700 " >
+                                    <tr class="hover:bg-blue-100 dark:hover:bg-blue-100" >
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                             {{$job->id}}
                                         </td>
@@ -75,10 +75,10 @@
                                             {{$job->description}}
                                         </td>
                                         <td class="text-sm text-gray-900 px-6 py-6 whitespace-nowrap">
-                                            <a href="{{ route('jobs.edit', ['id'=>$job->id]) }}" class="px-5 py-2 bg-blue-500 rounded-md text-white text-base shadow-md">Edit</a>
+                                            <a href="{{ route('jobs.edit', ['id'=>$job->id]) }}" class="px-5 py-2 bg-blue-500 rounded-md text-white text-base shadow-md" >Edit</a>
                                         </td>
                                         <td class="text-sm text-gray-900 px-6 py-6 whitespace-nowrap">
-                                            <a id="deleteButton" data-job-id="{{ $job->id }}" class="px-5 py-2 bg-red-500 rounded-md text-white text-base shadow-md">Delete</a>
+                                            <a id="deleteButton" data-job-id="{{ $job->id }}" class="px-5 py-2 bg-red-500 rounded-md text-white text-base shadow-md" style="cursor:pointer;">Delete</a>
                                         </td>
                                         <!-- confirm delete modal -->
                                         <div id="deleteModal" class="fixed z-10 inset-0 overflow-y-auto hidden">
