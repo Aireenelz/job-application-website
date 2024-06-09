@@ -56,7 +56,7 @@
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200 ">
                                     @forelse ($applications as $application)
-                                    <tr class="hover:bg-blue-200 hover:text-white dark:hover:bg-blue-700 ">
+                                    <tr class="hover:bg-blue-100 dark:hover:bg-blue-100 ">
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium ">
                                             {{$application->job->id}}
                                         </td>
@@ -72,21 +72,21 @@
                                         <td class="text-sm px-6 py-6 whitespace-nowrap">
                                             <a href="{{ asset('storage/' . $application->resume) }}" target="_blank" class="px-5 py-2 bg-blue-500 rounded-md text-white text-base shadow-md">View Resume</a>
                                         </td>
-                                        <td>
+                                        <td class="px-6 py-6 ">
                                             @if ($application->coverletter)
                                                 <a href="{{ asset('storage/' . $application->coverletter) }}" target="_blank" class="px-5 py-2 bg-blue-500 rounded-md text-white text-base shadow-md">View CV</a>
                                             @else
                                                 <p class="text-sm">No CV attached</p>
                                             @endif
                                         </td>
-                                        <td>
+                                        <td class="text-sm px-6 py-6">
                                             {{ ucfirst($application->status) }}
                                         </td>
-                                        <td>
+                                        <td class="text-sm px-6 py-6">
                                             @if ($application->status == 'pending')
                                             <form action="{{ route('application.forward', $application->id) }}" method="POST">
                                                 @csrf
-                                                <button type="submit">Forward</button>
+                                                <button type="submit" class="px-4 py-2 bg-green-500 text-white font-semibold rounded-md shadow-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-75">Forward</button>
                                             </form>
                                             @endif
                                         </td>
